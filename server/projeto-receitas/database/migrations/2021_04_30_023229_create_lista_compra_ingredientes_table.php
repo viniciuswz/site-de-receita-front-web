@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateListaCompraIngredientesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('lista_compra_ingredientes', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('ingrediente_id')->constrained('ingredientes');
+            $table->foreignId('lista_compra_id')->constrained('lista_compra');
+            $table->boolean('comprado');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('lista_compra_ingredientes');
+    }
+}
