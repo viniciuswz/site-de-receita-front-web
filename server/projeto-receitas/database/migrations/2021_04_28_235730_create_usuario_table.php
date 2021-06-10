@@ -16,7 +16,7 @@ class CreateUsuarioTable extends Migration
         Schema::create('usuario', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tipo_usuario_id')->constrained('tipo_usuario');
-            $table->string('senha', 64);
+            $table->string('password', 64);
             $table->string('email', 100);
             $table->string('img_perfil', 200);
             $table->string('img_capa', 200);
