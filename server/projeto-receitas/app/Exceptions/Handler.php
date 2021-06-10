@@ -4,6 +4,9 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use ErrorException;
+use PDOException;
+use Error;
 
 class Handler extends ExceptionHandler
 {
@@ -36,6 +39,24 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             //
+        });
+
+        $this->reportable(function (Error $e) {
+            if(env('APP_ENV') != "local"){
+                // Disparar Email de Log
+            }
+        });
+
+        $this->reportable(function (ErrorException $e) {
+            if(env('APP_ENV') != "local"){
+                // Disparar Email de Log
+            }
+        });
+
+        $this->reportable(function (PDOException $e) {
+            if(env('APP_ENV') != "local"){
+                // Disparar Email de Log
+            }
         });
     }
 }
