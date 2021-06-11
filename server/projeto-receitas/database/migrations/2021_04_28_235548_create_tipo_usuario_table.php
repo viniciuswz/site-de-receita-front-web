@@ -16,7 +16,7 @@ class CreateTipoUsuarioTable extends Migration
         Schema::create('tipo_usuario', function (Blueprint $table) {
             $table->id();
             $table->string('descricao', 64);
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
             $table->timestamps();
         });
     }

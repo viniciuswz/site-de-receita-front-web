@@ -18,8 +18,8 @@ class CreateAvaliacaoTable extends Migration
             $table->foreignId('receita_id')->constrained('receita');
             $table->foreignId('usuario_id')->constrained('usuario');
             $table->string('descricao', 100);
-            $table->integer('valor');
-            $table->boolean('status_ativo');
+            $table->float('valor', 10, 2);
+            $table->boolean('status_ativo')->default(true);
             $table->text('imagens');
             $table->timestamps();
         });

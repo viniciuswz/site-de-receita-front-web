@@ -21,8 +21,8 @@ class CreateDenunciaReceitaTable extends Migration
 
             $table->text('descricao');
             $table->text('coment_resolucao');
-            $table->boolean('status_denuncia');
-            $table->boolean('status_ativo');
+            $table->boolean('status_denuncia')->default(true);
+            $table->boolean('status_ativo')->default(true);
 
             $table->timestamps();
         });

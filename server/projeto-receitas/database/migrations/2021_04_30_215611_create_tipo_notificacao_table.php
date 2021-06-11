@@ -20,7 +20,7 @@ class CreateTipoNotificacaoTable extends Migration
             $table->string('verbo_plural', 50);
             $table->string('url_destino', 200);
             $table->string('icone', 200);
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
             $table->timestamps();
         });
     }

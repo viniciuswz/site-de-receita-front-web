@@ -17,7 +17,7 @@ class CreateSubcategoriaReceitaTable extends Migration
         Schema::create('subcategoria_receita', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subcategoria_id')->constrained('subcategoria');
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
             $table->dateTime('data_criacao');
             $table->timestamps();
         });

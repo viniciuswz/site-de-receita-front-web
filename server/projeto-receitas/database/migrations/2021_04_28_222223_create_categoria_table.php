@@ -17,7 +17,7 @@ class CreateCategoriaTable extends Migration
             $table->id();
             $table->string('descricao', 64);
             $table->string('imagem', 200);
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
             $table->dateTime('data_criacao');
             $table->timestamps();
         });

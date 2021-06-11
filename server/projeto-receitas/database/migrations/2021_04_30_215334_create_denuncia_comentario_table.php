@@ -19,8 +19,8 @@ class CreateDenunciaComentarioTable extends Migration
             $table->foreignId('comentario_id')->constrained('comentario');
             $table->text('descricao');
             $table->text('coment_resolucao');
-            $table->boolean('status_denuncia');
-            $table->boolean('status_ativo');
+            $table->boolean('status_denuncia')->default(true);
+            $table->boolean('status_ativo')->default(true);
             $table->dateTime('data_avaliacao');
             $table->timestamps();
         });

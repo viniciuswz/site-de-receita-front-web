@@ -17,7 +17,7 @@ class CreateFavoritaTable extends Migration
             $table->id();
             $table->foreignId('usuario_id')->constrained('usuario');
             $table->foreignId('receita_id')->constrained('receita');
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
             $table->timestamps();
         });
     }

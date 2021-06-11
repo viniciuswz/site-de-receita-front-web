@@ -15,10 +15,10 @@ class CreateCurtidaComentarioTable extends Migration
     {
         Schema::create('curtida_comentario', function (Blueprint $table) {
             $table->id();
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
             $table->foreignId('usuario_id')->constrained('usuario');
             $table->foreignId('comentario_id')->constrained('comentario');
-            
+
             $table->timestamps();
         });
     }
