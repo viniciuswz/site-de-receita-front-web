@@ -20,7 +20,7 @@ class CreateUsuarioNotificarTable extends Migration
             $table->foreignId('usuario_id')->constrained('usuario');
 
             $table->dateTime('data_visu');
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
 
             $table->timestamps();
         });

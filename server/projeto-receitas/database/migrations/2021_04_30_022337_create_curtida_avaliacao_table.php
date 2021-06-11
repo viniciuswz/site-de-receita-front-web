@@ -17,7 +17,7 @@ class CreateCurtidaAvaliacaoTable extends Migration
             $table->id();
             $table->foreignId('usuario_id')->constrained('usuario');
             $table->foreignId('avaliacao_id')->constrained('avaliacao');
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
             $table->timestamps();
         });
     }

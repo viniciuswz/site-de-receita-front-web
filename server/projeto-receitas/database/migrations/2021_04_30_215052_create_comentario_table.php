@@ -16,7 +16,7 @@ class CreateComentarioTable extends Migration
         Schema::create('comentario', function (Blueprint $table) {
             $table->id();
             $table->text('descricao');
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
 
             $table->foreignId('usuario_id')->constrained('usuario');
             $table->foreignId('receita_id')->constrained('receita');

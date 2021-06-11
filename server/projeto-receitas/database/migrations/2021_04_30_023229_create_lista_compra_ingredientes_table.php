@@ -17,7 +17,7 @@ class CreateListaCompraIngredientesTable extends Migration
             $table->id();
             $table->foreignId('ingrediente_id')->constrained('ingredientes');
             $table->foreignId('lista_compra_id')->constrained('lista_compra');
-            $table->boolean('comprado');
+            $table->boolean('comprado')->default(false);
             $table->timestamps();
         });
     }

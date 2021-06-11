@@ -20,7 +20,7 @@ class CreateReceitaTable extends Migration
             $table->text('imagens');
             $table->float('tempo_preparo', 4, 2);
             $table->integer('qtd_porcoes');
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
             $table->boolean('status_aprovacao');
             $table->dateTime('data_criacao');
 

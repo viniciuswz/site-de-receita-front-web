@@ -16,7 +16,7 @@ class CreateIngredientesTable extends Migration
         Schema::create('ingredientes', function (Blueprint $table) {
             $table->id();
             $table->string('descricao', 100);
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ class CreateModoPreparoTable extends Migration
             $table->id();
             $table->foreignId('tipo_modo_id')->constrained('tipo_modo');
             $table->integer('num_passo');
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
             $table->text('descricao');
             $table->timestamps();
         });

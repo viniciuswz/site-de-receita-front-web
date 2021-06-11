@@ -17,10 +17,10 @@ class CreateUsuarioTable extends Migration
             $table->id();
             $table->foreignId('tipo_usuario_id')->constrained('tipo_usuario');
             $table->string('password', 64);
-            $table->string('email', 100);
+            $table->string('email', 100)->unique();
             $table->string('img_perfil', 200);
             $table->string('img_capa', 200);
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
             $table->dateTime('data_criacao');
             $table->timestamps();
         });

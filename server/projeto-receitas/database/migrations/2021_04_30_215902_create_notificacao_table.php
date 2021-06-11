@@ -21,7 +21,7 @@ class CreateNotificacaoTable extends Migration
 
             $table->integer('qtd_outras_pessoas');
             $table->integer('aux_id');
-            $table->boolean('status_ativo');
+            $table->boolean('status_ativo')->default(true);
 
             $table->timestamps();
         });
