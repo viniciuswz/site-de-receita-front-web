@@ -21,7 +21,7 @@ class UserTest extends TestCase
     {
         $user = new UserLib();
         $userProtocol = new UserProtocol();
-        $userProtocol->setName(Str::random(10));
+        $userProtocol->setName(Str::random(10) . ' ' . Str::random(10));
         $userProtocol->setEmail(Str::random(10).'@gmail.com');
         $userProtocol->setPassword(Str::random(10));
         $userProtocol->setImgPerfil(Str::random(10));

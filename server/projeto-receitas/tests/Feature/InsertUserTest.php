@@ -38,7 +38,7 @@ class InsertUserTest extends TestCase
         $this->expectExceptionMessage("O E-mail informado já existe em nossa base de dados");
 
         $userProtocol = new UserProtocol();
-        $userProtocol->setName(Str::random(10));
+        $userProtocol->setName(Str::random(10) . ' ' . Str::random(10));
         $userProtocol->setEmail(Str::random(10).'@gmail.com');
         $userProtocol->setPassword(Str::random(10));
         $userProtocol->setImgPerfil(Str::random(10));
@@ -54,7 +54,7 @@ class InsertUserTest extends TestCase
     {
         $insertUser = new InsertUser();
         $userProtocol = new UserProtocol();
-        $userProtocol->setName(Str::random(10));
+        $userProtocol->setName(Str::random(10) . ' ' . Str::random(10));
         $userProtocol->setEmail(Str::random(10).'@gmail.com');
         $userProtocol->setPassword(Str::random(10));
         $userProtocol->setImgPerfil(Str::random(10));

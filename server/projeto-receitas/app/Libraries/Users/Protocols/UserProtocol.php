@@ -2,6 +2,11 @@
 
 namespace App\Libraries\Users\Protocols;
 
+use Illuminate\Support\Facades\Hash;
+
+use App\Libraries\Users\Exceptions\ExceptionLib\UserProtocolException;
+use App\Libraries\Utilities\ValidationLib;
+
 class UserProtocol
 {
     private $id;
@@ -16,39 +21,66 @@ class UserProtocol
     public function getName(){
         return $this->nome;
     }
+
     public function getEmail(){
         return $this->email;
     }
+
     public function getPassword(){
         return $this->password;
     }
+
     public function getImgPerfil(){
         return $this->imgPerfil;
     }
+
     public function getImgCapa(){
         return $this->imgCapa;
     }
+
     public function getTipoUsuarioId(){
         return $this->tipoUsuarioId;
     }
 
     public function setName($name){
-        return $this->nome = $name;
+        $name = ValidationLib::sanitizarString(trim($name));
+        if(count(explode(' ', $name)) < 2){
+            throw UserProtocolException::nameWithoutLastName();
+        }
+        $this->nome = $name;
     }
+
     public function setEmail($email){
-        return $this->email = $email;
+        $email = trim($email);
+        if(!ValidationLib::validEmail($email)){
+            throw UserProtocolException::invalidEmail();
+        }
+        $this->email = $email;
     }
+
     public function setPassword($password){
-        return $this->password = $password;
+        if(empty($password)){
+            throw UserProtocolException::passwordEmpty();
+        }
+        $password = Hash::make($password);
+        $this->password = $password;
     }
+
     public function setImgPerfil($imgPerfil){
-        return $this->imgPerfil = $imgPerfil;
+        $imgPerfil = ValidationLib::sanitizarString(trim($imgPerfil));
+        $this->imgPerfil = $imgPerfil;
     }
+
     public function setImgCapa($imgCapa){
-        return $this->imgCapa = $imgCapa;
+        $imgCapa = ValidationLib::sanitizarString(trim($imgCapa));
+        $this->imgCapa = $imgCapa;
     }
+
     public function setTipoUsuarioId($id){
-        return $this->tipoUsuarioId = $id;;
+        if(! ValidationLib::validNumber($id)){
+            throw UserProtocolException::invalidIdTipoUsuario();
+        }
+        $this->tipoUsuarioId = $id;;
     }
 }
 
