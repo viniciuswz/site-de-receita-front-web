@@ -15,7 +15,6 @@ class InsertUserTest extends TestCase
 {
     public function test_param_insert_user_is_type_user_protocol()
     {
-
         $observer = $this->getMockBuilder(InsertUser::class)->getMock();
 
         $observer->expects($this->once())
@@ -30,6 +29,24 @@ class InsertUserTest extends TestCase
         $this->expectExceptionCode(400);
         $insertUser = new InsertUser();
         $userProtocol = new UserProtocol();
+        $insertUser->insertWithSendEmail($userProtocol);
+    }
+
+    public function test_retuns_exception_because_email_duplicate(){
+        $this->expectException(InsertUserException::class);
+        $this->expectExceptionCode(400);
+        $this->expectExceptionMessage("O E-mail informado já existe em nossa base de dados");
+
+        $userProtocol = new UserProtocol();
+        $userProtocol->setName(Str::random(10));
+        $userProtocol->setEmail(Str::random(10).'@gmail.com');
+        $userProtocol->setPassword(Str::random(10));
+        $userProtocol->setImgPerfil(Str::random(10));
+        $userProtocol->setImgCapa(Str::random(10));
+        $userProtocol->setTipoUsuarioId(1);
+
+        $insertUser = new InsertUser();
+        $insertUser->insertWithSendEmail($userProtocol);
         $insertUser->insertWithSendEmail($userProtocol);
     }
 

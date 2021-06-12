@@ -11,6 +11,7 @@ class InsertUser
     public function insertWithSendEmail(UserProtocol $userProtocol): User
     {
         $this->verifyObrigatoriedadeCampos($userProtocol);
+        $this->isUniqueEmail($userProtocol->getEmail());
         return User::create([
             // 'name' => $userProtocol->getName(),
             'email' => $userProtocol->getEmail(),
@@ -32,6 +33,14 @@ class InsertUser
             return true;
         }
         throw InsertUserException::insertUserColumnsEmpty($camposInvalidos);
+    }
+
+    private function isUniqueEmail(string $email): bool{
+        $unique = User::where('email', $email)->count() <= 0;
+        if($unique){
+            return true;
+        }
+        throw InsertUserException::emailNotUnique();
     }
 
     private function getCamposValidate(): array {
