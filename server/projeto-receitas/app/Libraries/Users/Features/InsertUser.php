@@ -13,7 +13,7 @@ class InsertUser
         $this->verifyObrigatoriedadeCampos($userProtocol);
         $this->isUniqueEmail($userProtocol->getEmail());
         return User::create([
-            // 'name' => $userProtocol->getName(),
+            'nome' => $userProtocol->getName(),
             'email' => $userProtocol->getEmail(),
             'password' => $userProtocol->getPassword(),
             'img_perfil' => $userProtocol->getImgPerfil(),
@@ -45,6 +45,11 @@ class InsertUser
 
     private function getCamposValidate(): array {
         return [
+            'nome' => [
+                'getFunction' => 'getName',
+                'setFunction' => 'setName',
+                'nome' => 'Nome',
+            ],
             'email' => [
                 'getFunction' => 'getEmail',
                 'setFunction' => 'setEmail',
