@@ -13,7 +13,7 @@ class InsertUserMock extends InsertUser
         return 1;
     }
 
-    protected function consultarIsUniqueEmail(string $email): bool
+    public function consultarIsUniqueEmail(string $email): bool
     {
         if($email == 'email@valid.com.br'){
             return true;

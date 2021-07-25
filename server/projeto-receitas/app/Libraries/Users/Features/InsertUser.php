@@ -5,8 +5,9 @@ namespace App\Libraries\Users\Features;
 use App\Libraries\Users\Protocols\UserProtocol;
 use App\Models\User;
 use App\Libraries\Users\Exceptions\ExceptionLib\InsertUserException;
+use App\Libraries\Users\Features\Protocol\InserUserProtocol;
 
-class InsertUser
+class InsertUser implements InserUserProtocol
 {
     public function insertWithSendEmail(UserProtocol $userProtocol): int
     {
@@ -49,7 +50,7 @@ class InsertUser
         throw InsertUserException::emailNotUnique();
     }
 
-    protected function consultarIsUniqueEmail(string $email): bool {
+    public function consultarIsUniqueEmail(string $email): bool {
         return User::where('email', $email)->count() <= 0;
     }
 
