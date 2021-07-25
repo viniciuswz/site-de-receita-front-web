@@ -8,11 +8,16 @@ use App\Libraries\Users\Exceptions\ExceptionLib\InsertUserException;
 
 class InsertUser
 {
-    public function insertWithSendEmail(UserProtocol $userProtocol): User
+    public function insertWithSendEmail(UserProtocol $userProtocol): int
     {
         $this->verifyObrigatoriedadeCampos($userProtocol);
         $this->isUniqueEmail($userProtocol->getEmail());
-        return User::create([
+        return $this->insertUserAndReturnIdUser($userProtocol);
+    }
+
+    protected function insertUserAndReturnIdUser(UserProtocol $userProtocol): int
+    {
+        $user = User::create([
             'nome' => $userProtocol->getName(),
             'email' => $userProtocol->getEmail(),
             'password' => $userProtocol->getPassword(),
@@ -20,6 +25,7 @@ class InsertUser
             'img_capa' => $userProtocol->getImgCapa(),
             'tipo_usuario_id' => $userProtocol->getTipoUsuarioId()
         ]);
+        return $user->id;
     }
 
     private function verifyObrigatoriedadeCampos(UserProtocol $user): bool {
@@ -36,11 +42,15 @@ class InsertUser
     }
 
     private function isUniqueEmail(string $email): bool{
-        $unique = User::where('email', $email)->count() <= 0;
+        $unique = $this->consultarIsUniqueEmail($email);
         if($unique){
             return true;
         }
         throw InsertUserException::emailNotUnique();
+    }
+
+    protected function consultarIsUniqueEmail(string $email): bool {
+        return User::where('email', $email)->count() <= 0;
     }
 
     private function getCamposValidate(): array {

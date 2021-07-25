@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Support\Str;
 
-use App\Libraries\Users\Features\InsertUser;
+use App\Libraries\Users\Features\Mocks\InsertUserMock;
 use App\Libraries\Users\Protocols\UserProtocol;
 use App\Libraries\Users\Exceptions\ExceptionLib\InsertUserException;
 
@@ -15,7 +15,7 @@ class InsertUserTest extends TestCase
 {
     public function test_param_insert_user_is_type_user_protocol()
     {
-        $observer = $this->getMockBuilder(InsertUser::class)->getMock();
+        $observer = $this->getMockBuilder(InsertUserMock::class)->getMock();
 
         $observer->expects($this->once())
                  ->method('insertWithSendEmail')
@@ -27,7 +27,7 @@ class InsertUserTest extends TestCase
     public function test_insert_user_returns_exception_because_user_protocol_empty(){
         $this->expectException(InsertUserException::class);
         $this->expectExceptionCode(400);
-        $insertUser = new InsertUser();
+        $insertUser = new InsertUserMock();
         $userProtocol = new UserProtocol();
         $insertUser->insertWithSendEmail($userProtocol);
     }
@@ -39,28 +39,28 @@ class InsertUserTest extends TestCase
 
         $userProtocol = new UserProtocol();
         $userProtocol->setName(Str::random(10) . ' ' . Str::random(10));
-        $userProtocol->setEmail(Str::random(10).'@gmail.com');
+        $userProtocol->setEmail('invalid@valid.com.br');
         $userProtocol->setPassword(Str::random(10));
         $userProtocol->setImgPerfil(Str::random(10));
         $userProtocol->setImgCapa(Str::random(10));
         $userProtocol->setTipoUsuarioId(1);
 
-        $insertUser = new InsertUser();
+        $insertUser = new InsertUserMock();
         $insertUser->insertWithSendEmail($userProtocol);
         $insertUser->insertWithSendEmail($userProtocol);
     }
 
-    public function test_return_user_protocol_insert_user()
+    public function test_return_id_user_insert_user()
     {
-        $insertUser = new InsertUser();
+        $insertUser = new InsertUserMock();
         $userProtocol = new UserProtocol();
         $userProtocol->setName(Str::random(10) . ' ' . Str::random(10));
-        $userProtocol->setEmail(Str::random(10).'@gmail.com');
+        $userProtocol->setEmail('email@valid.com.br');
         $userProtocol->setPassword(Str::random(10));
         $userProtocol->setImgPerfil(Str::random(10));
         $userProtocol->setImgCapa(Str::random(10));
         $userProtocol->setTipoUsuarioId(1);
 
-        $this->assertInstanceOf('\App\Models\User', $insertUser->insertWithSendEmail($userProtocol));
+        $this->assertIsInt($insertUser->insertWithSendEmail($userProtocol));
     }
 }

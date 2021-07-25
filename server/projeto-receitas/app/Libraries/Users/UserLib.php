@@ -8,9 +8,8 @@ use App\Models\User;
 
 class UserLib
 {
-    public function insertWithSendEmail(UserProtocol $user): User
+    public function insertWithSendEmail(UserProtocol $user, InsertUser $insert): int
     {
-        $insert = new InsertUser();
         return $insert->insertWithSendEmail($user);
     }
 }
