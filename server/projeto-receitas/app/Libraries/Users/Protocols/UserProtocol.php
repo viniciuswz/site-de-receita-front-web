@@ -9,6 +9,9 @@ use App\Libraries\Utilities\ValidationLib;
 
 class UserProtocol
 {
+
+    public static $TIPO_USUARIO_COMUM = 3;
+
     private $id;
     private $nome;
     private $tipoUsuarioId;

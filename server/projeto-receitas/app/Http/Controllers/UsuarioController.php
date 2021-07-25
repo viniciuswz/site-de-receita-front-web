@@ -18,7 +18,7 @@ class UsuarioController extends Controller
             $userProtocol->setPassword($request->get('password'));
             $userProtocol->setImgPerfil('imagem');
             $userProtocol->setImgCapa('imagem');
-            $userProtocol->setTipoUsuarioId(1);
+            $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
 
             $userLib = new UserLib();
             $userLib->insertWithSendEmail($userProtocol, new InsertUser());

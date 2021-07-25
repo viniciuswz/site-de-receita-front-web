@@ -27,7 +27,7 @@ class UserTest extends TestCase
         $userProtocol->setPassword(Str::random(10));
         $userProtocol->setImgPerfil(Str::random(10));
         $userProtocol->setImgCapa(Str::random(10));
-        $userProtocol->setTipoUsuarioId(1);
+        $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
         $insert = new InsertUserMock();
         $this->assertIsInt($user->insertWithSendEmail($userProtocol, $insert));
     }

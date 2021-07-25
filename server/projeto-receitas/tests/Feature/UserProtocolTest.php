@@ -125,9 +125,9 @@ class UserProtocolTest extends TestCase
 
     public function test_set_tipo_usuario_and_returns_tipo_usuario()
     {
-        $tipo = 1;
+        $tipo = 3;
         $user = new UserProtocol();
-        $user->setTipoUsuarioId($tipo);
+        $user->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
 
         $this->assertEquals($tipo, $user->getTipoUsuarioId());
     }

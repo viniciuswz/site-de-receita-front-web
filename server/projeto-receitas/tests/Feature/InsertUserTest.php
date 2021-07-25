@@ -43,7 +43,7 @@ class InsertUserTest extends TestCase
         $userProtocol->setPassword(Str::random(10));
         $userProtocol->setImgPerfil(Str::random(10));
         $userProtocol->setImgCapa(Str::random(10));
-        $userProtocol->setTipoUsuarioId(1);
+        $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
 
         $insertUser = new InsertUserMock();
         $insertUser->insertWithSendEmail($userProtocol);
@@ -59,7 +59,7 @@ class InsertUserTest extends TestCase
         $userProtocol->setPassword(Str::random(10));
         $userProtocol->setImgPerfil(Str::random(10));
         $userProtocol->setImgCapa(Str::random(10));
-        $userProtocol->setTipoUsuarioId(1);
+        $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
 
         $this->assertIsInt($insertUser->insertWithSendEmail($userProtocol));
     }
