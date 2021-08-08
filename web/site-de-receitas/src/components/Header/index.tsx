@@ -3,7 +3,7 @@ import { Container } from './styles';
 const Header: React.FC = () => {
   return (
     <Container>
-      <p>Olá header</p>
+      <p>Olá header Teste CI</p>
     </Container>
   );
 };
