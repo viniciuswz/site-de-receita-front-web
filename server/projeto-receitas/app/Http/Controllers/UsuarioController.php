@@ -13,10 +13,11 @@ class UsuarioController extends Controller
     public function insert(Request $request) {
         try {
             $userProtocol = new UserProtocol();
+
             $userProtocol->setName($request->get('name'));
             $userProtocol->setEmail($request->get('email'));
             $userProtocol->setPassword($request->get('password'));
-            $userProtocol->setImgPerfil('imagem');
+            $userProtocol->setImgPerfil($request->file('teste'));
             $userProtocol->setImgCapa('imagem');
             $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
 

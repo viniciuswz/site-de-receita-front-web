@@ -105,15 +105,6 @@ class UserProtocolTest extends TestCase
         $user->setPassword($pass);
     }
 
-    public function test_set_img_perfil_with_spaces_and_returns_img_perfil_without_spaces()
-    {
-        $img = ' img_perfil.jpg ';
-        $user = new UserProtocol();
-        $user->setImgPerfil($img);
-
-        $this->assertEquals(trim($img), $user->getImgPerfil());
-    }
-
     public function test_set_img_capa_with_spaces_and_returns_img_capa_without_spaces()
     {
         $img = ' img_capa.jpg ';

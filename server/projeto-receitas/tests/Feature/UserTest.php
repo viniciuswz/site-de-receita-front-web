@@ -5,14 +5,20 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Support\Str;
 
 use App\Libraries\Users\UserLib;
 use App\Libraries\Users\Protocols\UserProtocol;
 use App\Libraries\Users\Features\Mocks\InsertUserMock;
-use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
 
 class UserTest extends TestCase
 {
+    protected function createImageFake($type){
+        $file = UploadedFile::fake();
+        return $file->create('fake_image', 0, $type);
+    }
+
     /**
      * A basic feature test example.
      *
@@ -25,7 +31,7 @@ class UserTest extends TestCase
         $userProtocol->setName(Str::random(10) . ' ' . Str::random(10));
         $userProtocol->setEmail('email@valid.com.br');
         $userProtocol->setPassword(Str::random(10));
-        $userProtocol->setImgPerfil(Str::random(10));
+        $userProtocol->setImgPerfil($this->createImageFake('image/png'));
         $userProtocol->setImgCapa(Str::random(10));
         $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
         $insert = new InsertUserMock();
