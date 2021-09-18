@@ -17,8 +17,8 @@ class UsuarioController extends Controller
             $userProtocol->setName($request->get('name'));
             $userProtocol->setEmail($request->get('email'));
             $userProtocol->setPassword($request->get('password'));
-            $userProtocol->setImgPerfil($request->file('teste'));
-            $userProtocol->setImgCapa('imagem');
+            $userProtocol->setImgPerfil($request->file('profile-img'));
+            $userProtocol->setImgCapa($request->file('profile-cover'));
             $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
 
             $userLib = new UserLib();

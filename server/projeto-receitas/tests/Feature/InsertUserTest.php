@@ -48,7 +48,7 @@ class InsertUserTest extends TestCase
         $userProtocol->setEmail('invalid@valid.com.br');
         $userProtocol->setPassword(Str::random(10));
         $userProtocol->setImgPerfil($this->createImageFake('image/png'));
-        $userProtocol->setImgCapa(Str::random(10));
+        $userProtocol->setImgCapa($this->createImageFake('image/png'));
         $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
 
         $insertUser = new InsertUserMock();
@@ -64,7 +64,7 @@ class InsertUserTest extends TestCase
         $userProtocol->setEmail('email@valid.com.br');
         $userProtocol->setPassword(Str::random(10));
         $userProtocol->setImgPerfil($this->createImageFake('image/png'));
-        $userProtocol->setImgCapa(Str::random(10));
+        $userProtocol->setImgCapa($this->createImageFake('image/png'));
         $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
 
         $this->assertIsInt($insertUser->insertWithSendEmail($userProtocol));

@@ -11,7 +11,7 @@ class UploadImgUser implements UploadFile
 
     protected $nameStoreDiretorio;
 
-    public function __construct($file, $nameStoreDiretorio = 'user-perfil')
+    public function __construct($file, $nameStoreDiretorio)
     {
         $this->file = $file;
         $this->nameStoreDiretorio = $nameStoreDiretorio;

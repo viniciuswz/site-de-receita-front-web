@@ -71,13 +71,13 @@ class UserProtocol
     }
 
     public function setImgPerfil($fileImg){
-        $upload = new UploadImgUser($fileImg);
+        $upload = new UploadImgUser($fileImg, 'user-perfil');
         $this->imgPerfil = $upload->store();
     }
 
     public function setImgCapa($imgCapa){
-        $imgCapa = ValidationLib::sanitizarString(trim($imgCapa));
-        $this->imgCapa = $imgCapa;
+        $upload = new UploadImgUser($imgCapa, 'user-capa');
+        $this->imgCapa = $upload->store();
     }
 
     public function setTipoUsuarioId($id){

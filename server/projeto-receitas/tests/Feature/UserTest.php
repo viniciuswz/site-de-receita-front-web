@@ -32,7 +32,7 @@ class UserTest extends TestCase
         $userProtocol->setEmail('email@valid.com.br');
         $userProtocol->setPassword(Str::random(10));
         $userProtocol->setImgPerfil($this->createImageFake('image/png'));
-        $userProtocol->setImgCapa(Str::random(10));
+        $userProtocol->setImgCapa($this->createImageFake('image/png'));
         $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
         $insert = new InsertUserMock();
         $this->assertIsInt($user->insertWithSendEmail($userProtocol, $insert));
