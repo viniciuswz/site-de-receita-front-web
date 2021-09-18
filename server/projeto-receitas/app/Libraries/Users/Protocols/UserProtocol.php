@@ -70,13 +70,13 @@ class UserProtocol
         $this->password = $password;
     }
 
-    public function setImgPerfil($fileImg){
-        $upload = new UploadImgUser($fileImg, 'user-perfil');
+    public function setImgPerfil($fileImg, $folderImg = 'user-perfil'){
+        $upload = new UploadImgUser($fileImg, $folderImg);
         $this->imgPerfil = $upload->store();
     }
 
-    public function setImgCapa($imgCapa){
-        $upload = new UploadImgUser($imgCapa, 'user-capa');
+    public function setImgCapa($imgCapa, $folderImg = 'user-capa'){
+        $upload = new UploadImgUser($imgCapa, $folderImg);
         $this->imgCapa = $upload->store();
     }
 

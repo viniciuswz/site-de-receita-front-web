@@ -31,8 +31,8 @@ class UserTest extends TestCase
         $userProtocol->setName(Str::random(10) . ' ' . Str::random(10));
         $userProtocol->setEmail('email@valid.com.br');
         $userProtocol->setPassword(Str::random(10));
-        $userProtocol->setImgPerfil($this->createImageFake('image/png'));
-        $userProtocol->setImgCapa($this->createImageFake('image/png'));
+        $userProtocol->setImgPerfil($this->createImageFake('image/png'), 'user-perfil-test');
+        $userProtocol->setImgCapa($this->createImageFake('image/png'), 'user-capa-test');
         $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
         $insert = new InsertUserMock();
         $this->assertIsInt($user->insertWithSendEmail($userProtocol, $insert));
