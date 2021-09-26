@@ -51,7 +51,13 @@
             ".ts"
           ]
         }
-      ]
+      ],
+      "jsx-a11y/label-has-associated-control": [ 2, {
+        "labelComponents": [ "Label" ],
+        "labelAttributes": ["label"],
+        "required": "either"
+      }],
+      "react/prop-types": "off"
     },
     "settings": {
       "import/resolver": {

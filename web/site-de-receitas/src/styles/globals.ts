@@ -8,6 +8,10 @@ export default createGlobalStyle`
   }
 
   body {
-    background-color: #e1e1e6;
+    background-color: ${props => props.theme.colors.background};
+  }
+
+  input{
+    outline: none;
   }
 `;
