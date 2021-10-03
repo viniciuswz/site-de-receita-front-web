@@ -1,12 +1,9 @@
 import { InputHTMLAttributes, useCallback, useState } from 'react';
 import { Container } from './styles';
 
-interface LoginInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  position: 'top' | 'middle' | 'bottom';
-  type: string;
-}
+type LoginInputProps = InputHTMLAttributes<HTMLInputElement>;
 
-const LoginInput: React.FC<LoginInputProps> = ({ position, type }) => {
+const LoginInputCheckbox: React.FC<LoginInputProps> = () => {
   const [inputValue, setInputValue] = useState('');
   const [inputFocus, setInputFocus] = useState(false);
 
@@ -19,11 +16,11 @@ const LoginInput: React.FC<LoginInputProps> = ({ position, type }) => {
   return (
     <Container
       hasValue={!!inputValue}
-      className={`${position} ${inputFocus ? 'focus' : ''}`}
+      className={`${inputFocus ? 'focus' : ''}`}
     >
       <input
-        id="first-name"
-        type=""
+        id="remember"
+        type="checkbox"
         name="namea"
         onChange={e => {
           setInputValue(e.target.value);
@@ -35,9 +32,12 @@ const LoginInput: React.FC<LoginInputProps> = ({ position, type }) => {
           handleInputFocus();
         }}
       />
-      <label htmlFor="first-name">Nome</label>
+      <label htmlFor="remember">
+        <div />
+        <span>label</span>
+      </label>
     </Container>
   );
 };
 
-export default LoginInput;
+export default LoginInputCheckbox;

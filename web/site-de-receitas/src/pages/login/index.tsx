@@ -1,8 +1,8 @@
-import { Container, LeftSide, RightSide } from '../styles/pages/Login';
-import LoginForm from '../components/LoginForm';
-import drawChef from '../../public/images/login_chef.svg';
+import { Container, LeftSide, RightSide } from './styles';
+import LoginForm from '../../components/LoginForm';
+import drawChef from '../../../public/images/login_chef.svg';
 
-const Login: React.FC = () => {
+const Login: React.FunctionComponent = () => {
   return (
     <Container>
       <LeftSide>
