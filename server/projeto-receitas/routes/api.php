@@ -26,7 +26,7 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function () {
 
 Route::prefix('v1')->group(function () {
     Route::prefix('user')->group(function () {
-        Route::post('insert',  [App\Http\Controllers\UsuarioController::class, 'insert']);
+        Route::post('',  [App\Http\Controllers\UsuarioController::class, 'insert']);
     });
 });
 
