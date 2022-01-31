@@ -32,7 +32,7 @@ class UsuarioController extends Controller
                 'status' => false,
                 'response' => $usu->getMessage()
             ], 202);
-        } catch (Exception $usu) {
+        } catch (\Exception $usu) {
             return response([
                 'status' => false,
                 'response' => 'Server Error'

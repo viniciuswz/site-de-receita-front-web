@@ -21,6 +21,7 @@ class UserProtocol
     private $imgPerfil;
     private $imgCapa;
     private $statusAtivo;
+    private $biografia;
 
     public function getName(){
         return $this->nome;
@@ -44,6 +45,10 @@ class UserProtocol
 
     public function getTipoUsuarioId(){
         return $this->tipoUsuarioId;
+    }
+
+    public function getBiografia(){
+        return $this->biografia;
     }
 
     public function setName($name){
@@ -85,6 +90,11 @@ class UserProtocol
             throw UserProtocolException::invalidIdTipoUsuario();
         }
         $this->tipoUsuarioId = $id;;
+    }
+
+    public function setBiografia($biografia){
+        $biografia = ValidationLib::sanitizarString(trim($biografia));
+        $this->biografia = $biografia;
     }
 }
 

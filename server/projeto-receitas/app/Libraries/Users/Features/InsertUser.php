@@ -76,11 +76,6 @@ class InsertUser implements InserUserProtocol
                 'setFunction' => 'setImgPerfil',
                 'nome' => 'Imagem de Perfil'
             ],
-            'img_capa' => [
-                'getFunction' => 'getImgCapa',
-                'setFunction' => 'setImgCapa',
-                'nome' => 'Imagem de Capa'
-            ],
             'tipo_usuario_id' => [
                 'getFunction' => 'getTipoUsuarioId',
                 'setFunction' => 'setTipoUsuarioId',

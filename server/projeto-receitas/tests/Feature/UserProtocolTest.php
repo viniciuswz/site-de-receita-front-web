@@ -113,4 +113,13 @@ class UserProtocolTest extends TestCase
 
         $this->assertEquals($tipo, $user->getTipoUsuarioId());
     }
+
+    public function test_set_biography_with_html_returns_only_text()
+    {
+        $texto = 'quo voluptas omnis molestias voluptates labore maxime consectetur quidem placeat fugit?';
+        $textoComScript = "<script>$texto</script>";
+        $user = new UserProtocol();
+        $user->setBiografia($textoComScript);
+        $this->assertEquals($texto, $user->getBiografia());
+    }
 }

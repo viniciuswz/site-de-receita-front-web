@@ -17,15 +17,19 @@ class UploadImgUser implements UploadFile
         $this->nameStoreDiretorio = $nameStoreDiretorio;
     }
 
-    public function store(): string
+    public function store(): ?string
     {
         if(! $this->validateType()) return null;
         return $this->file->store($this->nameStoreDiretorio);
     }
 
     public function validateType(): bool {
-        $extensaoAceitas = ['png', 'jpg', 'jpeg'];
-        return in_array($this->file->extension(), $extensaoAceitas);
+        try {
+            $extensaoAceitas = ['png', 'jpg', 'jpeg'];
+            return in_array($this->file->extension(), $extensaoAceitas);
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }
 
