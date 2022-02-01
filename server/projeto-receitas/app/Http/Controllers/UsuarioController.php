@@ -5,24 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Libraries\Users\UserLib;
 use App\Libraries\Users\Features\InsertUser;
-use App\Libraries\Users\Protocols\UserProtocol;
 use App\Libraries\Users\Exceptions\UserException;
+use App\Libraries\Users\Factories\InsertUserFactory;
 
 class UsuarioController extends Controller
 {
     public function insert(Request $request) {
         try {
-            $userProtocol = new UserProtocol();
-
-            $userProtocol->setName($request->get('name'));
-            $userProtocol->setEmail($request->get('email'));
-            $userProtocol->setPassword($request->get('password'));
-            $userProtocol->setImgPerfil($request->file('profile-img'));
-            $userProtocol->setImgCapa($request->file('profile-cover'));
-            $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);
-
+            $userProtocol = InsertUserFactory::createUserProtocolByRequest($request);
             $userLib = new UserLib();
             $userLib->insertWithSendEmail($userProtocol, new InsertUser());
+
             return response([
                 'status' => true,
                 'response' => 'OK'

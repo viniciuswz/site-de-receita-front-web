@@ -2,8 +2,6 @@
 
 namespace App\Libraries\Utilities\Upload;
 
-use Illuminate\Http\UploadedFile;
-
 use App\Libraries\Utilities\Upload\UploadFile;
 
 class UploadImgUser implements UploadFile
@@ -27,7 +25,7 @@ class UploadImgUser implements UploadFile
         try {
             $extensaoAceitas = ['png', 'jpg', 'jpeg'];
             return in_array($this->file->extension(), $extensaoAceitas);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return false;
         }
     }
