@@ -33,6 +33,10 @@ export const LeftSide = styled.div`
     height: auto;
     width: 100%;
   }
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const RightSide = styled.div`
@@ -45,4 +49,13 @@ export const RightSide = styled.div`
   max-height: 679px;
   max-width: 544px;
   flex-grow: 1;
+  @media screen and (max-width: 1024px) {
+    border-radius: 24px;
+  }
+
+  @media screen and (max-width: 768px) {
+    border-radius: 16px;
+    margin: 8px;
+    height: auto;
+  }
 `;

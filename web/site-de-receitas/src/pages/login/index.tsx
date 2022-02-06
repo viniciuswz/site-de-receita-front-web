@@ -1,6 +1,5 @@
 import { Container, LeftSide, RightSide } from './styles';
 import LoginForm from '../../components/LoginForm';
-import drawChef from '../../../public/images/login_chef.svg';
 
 const Login: React.FunctionComponent = () => {
   return (
@@ -13,6 +12,7 @@ const Login: React.FunctionComponent = () => {
         />
         <img className="chef" src="/images/login_chef.svg" alt="chef draw" />
       </LeftSide>
+
       <RightSide>
         <LoginForm />
       </RightSide>

@@ -34,7 +34,7 @@ const LoginInputCheckbox: React.FC<LoginInputProps> = () => {
       />
       <label htmlFor="remember">
         <div />
-        <span>label</span>
+        <span>Lembrar-me</span>
       </label>
     </Container>
   );

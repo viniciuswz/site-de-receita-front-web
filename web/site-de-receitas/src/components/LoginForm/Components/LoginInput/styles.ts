@@ -23,8 +23,18 @@ export const Container = styled.div<ContainerProps>`
     border-bottom-right-radius: 8px;
   }
   &.focus {
-    border-color: #000;
+    /* border-color: #000; */
     z-index: 1;
+    &::before {
+      content: '';
+      height: 80%;
+      width: 2px;
+      background-color: #000;
+      border-radius: 12px;
+
+      position: absolute;
+      left: -2px;
+    }
   }
   input {
     width: 100%;
@@ -84,4 +94,11 @@ export const Container = styled.div<ContainerProps>`
         color: #c1bccc;
       `}
   }
+`;
+
+export const PasswordButton = styled.button`
+  background: transparent;
+  border: 0;
+  appearance: none;
+  margin-right: 24px;
 `;

@@ -18,6 +18,33 @@ export const Container = styled.div`
     font-style: normal;
     color: #6a6180;
   }
+
+  .without-account {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    p {
+      font-size: 16px;
+      line-height: 26px;
+      color: #6a6180;
+    }
+    button {
+      border: 0;
+      background: transparent;
+      color: #00b1d2;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 60px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 32px;
+  }
 `;
 
 export const Form = styled.form`
@@ -49,6 +76,7 @@ export const FormBottom = styled.div`
 
 export const ButtonSubmit = styled.button`
   max-width: 352px;
+  margin: 0 auto;
 
   width: 100%;
   height: 56px;
@@ -67,4 +95,34 @@ export const ButtonSubmit = styled.button`
   border: 0;
   margin-top: 24px;
   color: #fff;
+`;
+
+export const ButtonLogInFacebook = styled.button`
+  max-width: 352px;
+  margin: 0 auto;
+
+  width: 100%;
+  height: 56px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 26px;
+  background: #1877f2;
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  border: 0;
+  margin-top: 24px;
+  color: #fff;
+  span {
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 8px;
+    }
+  }
 `;
