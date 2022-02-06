@@ -1,4 +1,4 @@
-import { Container, LeftSide, RightSide } from './styles';
+import { Container, LeftSide, RightSide } from '@/styles/Login';
 import LoginForm from '../../components/LoginForm';
 
 const Login: React.FunctionComponent = () => {
