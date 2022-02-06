@@ -1,6 +1,12 @@
+import { useCallback, useRef } from 'react';
+
+import * as Yup from 'yup';
+import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
+
+import getValidationErrors from 'src/utils/getValidationErrors';
 import {
   Container,
-  Form,
   FormBottom,
   ButtonSubmit,
   ButtonLogInFacebook,
@@ -10,22 +16,56 @@ import LoginInput from './Components/LoginInput';
 import LoginInputCheckbox from './Components/LoginInputCheckbox';
 
 const LoginForm: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
+  const handleFormSubmit = useCallback(async data => {
+    try {
+      const schema = Yup.object({
+        email: Yup.string()
+          .email('Você precisa inserir um e-mail válido')
+          .required('O campo é obrigatorio'),
+        password: Yup.string().required('O campo é obrigatorio'),
+      });
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      console.log(data);
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        // Validation failed
+        console.log(data);
+
+        const errors = getValidationErrors(error);
+
+        console.dir(errors);
+        formRef.current?.setErrors(errors);
+      }
+    }
+  }, []);
   return (
     <Container>
-      <Form>
+      <Form onSubmit={handleFormSubmit} ref={formRef}>
         <h1>Fazer Login</h1>
-        <LoginInput name="E-mail" id="e-mail" position="top" type="text" />
         <LoginInput
-          name="Senha"
+          name="email"
+          id="e-mail"
+          position="top"
+          type="e-mail"
+          labelName="E-mail"
+        />
+        <LoginInput
+          name="password"
           id="password"
           position="bottom"
           type="password"
+          labelName="Senha"
         />
         <FormBottom>
           <LoginInputCheckbox />
           <a href="#forget">Esqueci a senha</a>
         </FormBottom>
-        <ButtonSubmit>Entrar</ButtonSubmit>
+        <ButtonSubmit type="submit">Entrar</ButtonSubmit>
         <div className="or">
           <p>ou</p>
         </div>

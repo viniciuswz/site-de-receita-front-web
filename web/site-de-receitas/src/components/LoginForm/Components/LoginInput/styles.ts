@@ -1,16 +1,23 @@
 import styled, { css } from 'styled-components';
 
+import { shade } from 'polished';
+
 interface ContainerProps {
   hasValue: boolean;
+}
+
+interface ContainerProps {
+  isErrored: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
   position: relative;
   border: 2px solid #e6e6f0;
   margin: -2px;
-  height: 72px;
   display: flex;
   align-items: center;
+
+  flex-direction: column;
 
   &.top {
     border-top-left-radius: 8px;
@@ -34,6 +41,8 @@ export const Container = styled.div<ContainerProps>`
 
       position: absolute;
       left: -2px;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
   input {
@@ -50,6 +59,10 @@ export const Container = styled.div<ContainerProps>`
     line-height: 24px;
     color: #6a6180;
     transition: 150ms;
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px white inset;
+    }
 
     &:focus {
       & + label {
@@ -94,6 +107,62 @@ export const Container = styled.div<ContainerProps>`
         color: #c1bccc;
       `}
   }
+
+  ${props =>
+    props.isErrored &&
+    css`
+      border-color: #db3b21;
+      background-color: rgba(219, 5, 33, 10%);
+      min-height: 72px;
+      height: auto;
+      z-index: 2;
+
+      .error-icon {
+        margin-right: 24px;
+        min-width: 24px;
+      }
+      label {
+        color: ${shade(0.4, '#c1bccc')};
+      }
+      input {
+        &:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0 30px #fbe6e8 inset;
+        }
+        &:focus {
+          & + label {
+            color: ${shade(0.4, '#c1bccc')};
+          }
+        }
+      }
+      &.focus {
+        &::before {
+          background-color: #db3b21;
+        }
+      }
+    `}
+`;
+
+export const ContainerInput = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 72px;
+`;
+export const ContainerError = styled.div`
+  position: absolute;
+  left: 24px;
+  bottom: 4px;
+  z-index: 1;
+
+  span {
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+
+    color: #db3b21;
+  }
 `;
 
 export const PasswordButton = styled.button`
@@ -101,4 +170,5 @@ export const PasswordButton = styled.button`
   border: 0;
   appearance: none;
   margin-right: 24px;
+  height: 24px;
 `;
