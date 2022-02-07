@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
+import { useToast } from '@/hooks/Toast';
+
 import getValidationErrors from 'src/utils/getValidationErrors';
 import {
   Container,
@@ -16,9 +18,11 @@ import LoginInput from './Components/LoginInput';
 import LoginInputCheckbox from './Components/LoginInputCheckbox';
 
 const LoginForm: React.FC = () => {
+  const { addToast } = useToast();
   const formRef = useRef<FormHandles>(null);
   const handleFormSubmit = useCallback(async data => {
     try {
+      formRef.current?.setErrors({});
       const schema = Yup.object({
         email: Yup.string()
           .email('Você precisa inserir um e-mail válido')
@@ -30,6 +34,11 @@ const LoginForm: React.FC = () => {
         abortEarly: false,
       });
 
+      addToast({
+        title: 'ae carai',
+        description: 'deu certo',
+        type: 'success',
+      });
       console.log(data);
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
