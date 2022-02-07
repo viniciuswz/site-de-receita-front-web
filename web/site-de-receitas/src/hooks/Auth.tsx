@@ -33,7 +33,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     const token = localStorage.getItem('@SemNome:token');
     const user = localStorage.getItem('@SemNome:user');
     if (token && user) {
-      api.defaults.headers.authorization = `Bearer ${token}`;
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
       return {
         token,
         user: JSON.parse(user),
@@ -52,7 +52,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     localStorage.setItem('@SemNome:token', token);
     localStorage.setItem('@SemNome:user', JSON.stringify(user));
 
-    api.defaults.headers.authorization = `Bearer ${token}`;
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
     setData({ token, user });
   }, []);
 

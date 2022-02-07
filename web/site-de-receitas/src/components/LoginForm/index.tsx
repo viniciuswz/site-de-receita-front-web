@@ -78,7 +78,16 @@ const LoginForm: React.FC = () => {
         <div className="or">
           <p>ou</p>
         </div>
-        <ButtonLogInFacebook>
+        <ButtonLogInFacebook
+          type="button"
+          onClick={() => {
+            addToast({
+              title: 'some daqui meo',
+              description: 'Para de tentar carai',
+              type: 'error',
+            });
+          }}
+        >
           <span>
             <img
               className="logo"
@@ -90,7 +99,18 @@ const LoginForm: React.FC = () => {
         </ButtonLogInFacebook>
         <div className="without-account">
           <p>Não tem conta ?</p>
-          <button type="button">Cadastre-se</button>
+          <button
+            type="button"
+            onClick={() => {
+              addToast({
+                title: 'Não tem essa página',
+                description: 'Para de tentar carai',
+                type: 'info',
+              });
+            }}
+          >
+            Cadastre-se
+          </button>
         </div>
       </Form>
     </Container>

@@ -7,4 +7,5 @@ export const Container = styled.div`
   padding: 30px;
   overflow: hidden;
   z-index: 10;
+  font-family: Roboto Slab;
 `;
