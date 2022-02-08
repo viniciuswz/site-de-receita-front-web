@@ -1,10 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { darken } from 'polished';
+
+interface ButtonSubmitProps {
+  isValidForm: boolean;
+}
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 67px 96px;
+  padding: 51px 96px;
+  height: 100%;
 
   form {
     width: 100%;
@@ -15,6 +21,7 @@ export const Container = styled.div`
       font-size: 36px;
       line-height: 36px;
       margin-bottom: 40px;
+      color: #32264d;
     }
   }
   .or {
@@ -26,7 +33,7 @@ export const Container = styled.div`
 
     font-size: 16px;
     line-height: 26px;
-    font-family: Roboto Slab;
+    font-family: Roboto;
     font-style: normal;
     color: #6a6180;
   }
@@ -36,12 +43,14 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
+    font-family: Roboto Slab;
+
     p {
       font-size: 16px;
       line-height: 26px;
       color: #6a6180;
     }
-    button {
+    a {
       border: 0;
       background: transparent;
       color: #00b1d2;
@@ -74,7 +83,7 @@ export const FormBottom = styled.div`
   }
 `;
 
-export const ButtonSubmit = styled.button`
+export const ButtonSubmit = styled.button<ButtonSubmitProps>`
   max-width: 352px;
   margin: 0 auto;
 
@@ -89,12 +98,25 @@ export const ButtonSubmit = styled.button`
   font-size: 16px;
   line-height: 26px;
   background: #00b1b2;
-  font-family: Roboto Slab;
+  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   border: 0;
   margin-top: 24px;
   color: #fff;
+  cursor: pointer;
+  transition: background 0.1s;
+
+  ${props =>
+    !props.isValidForm &&
+    css`
+      background-color: #dcdce5;
+      color: #9c98a6;
+      &:hover {
+        background-color: ${darken(0.05, '#dcdce5')};
+        color: ${darken(0.01, '#9c98a6')};
+      }
+    `}
 `;
 
 export const ButtonLogInFacebook = styled.button`
@@ -112,12 +134,16 @@ export const ButtonLogInFacebook = styled.button`
   font-size: 16px;
   line-height: 26px;
   background: #1877f2;
-  font-family: Roboto Slab;
+  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   border: 0;
-  margin-top: 24px;
   color: #fff;
+  cursor: pointer;
+  transition: background 0.1s;
+  &:hover {
+    background-color: ${darken(0.05, '#1877f2')};
+  }
   span {
     display: flex;
     align-items: center;

@@ -1,23 +1,23 @@
-import { Container, LeftSide, RightSide } from '@/styles/Login';
-import LoginForm from '../../components/Welcome/LoginForm';
+import { Container, LeftSide, RightSide } from '@/styles/Cadastro';
+import SignInForm from '../../components/Welcome/SignInForm';
 
-const Login: React.FunctionComponent = () => {
+const Cadastro: React.FunctionComponent = () => {
   return (
     <Container>
       <LeftSide>
+        <SignInForm />
+      </LeftSide>
+
+      <RightSide>
         <img
           className="logo"
           src="/images/login_logo_light.svg"
           alt="logo daora"
         />
         <img className="chef" src="/images/login_chef.svg" alt="chef draw" />
-      </LeftSide>
-
-      <RightSide>
-        <LoginForm />
       </RightSide>
     </Container>
   );
 };
 
-export default Login;
+export default Cadastro;
