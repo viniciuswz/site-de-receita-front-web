@@ -27,12 +27,15 @@
         "prettier"
     ],
     "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
       "import/prefer-default-export": "off",
       "react/jsx-props-no-spreading": "off",
       "prettier/prettier": "error",
       "react/prop-type": "off",
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/ban-types": "off",
       "import/extensions": [
         "error",
         "ignorePackages",
@@ -51,7 +54,13 @@
             ".ts"
           ]
         }
-      ]
+      ],
+      "jsx-a11y/label-has-associated-control": [ 2, {
+        "labelComponents": [ "Label" ],
+        "labelAttributes": ["label"],
+        "required": "either"
+      }],
+      "react/prop-types": "off"
     },
     "settings": {
       "import/resolver": {
