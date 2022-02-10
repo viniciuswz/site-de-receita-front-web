@@ -152,3 +152,29 @@ export const ButtonLogInFacebook = styled.button`
     }
   }
 `;
+
+export const StepIndicator = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  .separator {
+    border-top: 2px dashed #e6e6f0;
+    width: 39px;
+    margin: 0px 4px;
+  }
+
+  &.two {
+    .separator {
+      border-top: 2px dashed #ff8a00;
+    }
+    svg {
+      circle {
+        stroke: #ff8a00;
+      }
+      path {
+        fill: #ff8a00;
+      }
+    }
+  }
+`;
