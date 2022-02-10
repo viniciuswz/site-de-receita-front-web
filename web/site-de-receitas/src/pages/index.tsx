@@ -1,7 +1,17 @@
 import Head from 'next/head';
-import { Container } from '../styles/pages/Home';
+import FirstFoldImage from '@/assets/images/home_first_folk_image.svg';
+import FirstFoldBackgroundImage from '@/assets/images/home_first_folk_background-image.svg';
+import FirstFoldBackgroundDetail from '@/assets/images/home_first_folk_background-detail.svg';
+import { BiSearch } from 'react-icons/bi';
 
-import Header from '../components/Header';
+import {
+  FirstFold,
+  FirstFoldContainer,
+  FirstFoldDetails,
+  InputContainer,
+  TopReciperSection,
+  TopReciperSectionItem,
+} from '../styles/pages/Home';
 
 const Home: React.FC = () => {
   return (
@@ -9,14 +19,31 @@ const Home: React.FC = () => {
       <Head>
         <title>Início | Site de receitas</title>
       </Head>
-      <Container>
-        <Header />
-        <div>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel facere,
-          ut omnis id a voluptatum nulla recusandae quod animi iste ipsam
-          facilis, eos quisquam. Expedita eligendi dolor mollitia minus commodi?
-        </div>
-      </Container>
+      <FirstFold>
+        <FirstFoldContainer>
+          <img
+            src="/images/home_first_folk_image.svg"
+            className="main-image"
+            alt="fold main"
+          />
+          <h1>O que vamos cozinhar hoje ?</h1>
+
+          <InputContainer>
+            <BiSearch size={30} color="#707070" />
+            <input type="text" placeholder="procure por alguma receita" />
+          </InputContainer>
+        </FirstFoldContainer>
+        <FirstFoldDetails>
+          <FirstFoldBackgroundImage className="left-icons" />
+          <FirstFoldBackgroundDetail className="left-detail" />
+
+          <FirstFoldBackgroundDetail className="right-detail" />
+          <FirstFoldBackgroundImage className="right-icons" />
+        </FirstFoldDetails>
+      </FirstFold>
+      <TopReciperSection>
+        <TopReciperSectionItem />
+      </TopReciperSection>
     </>
   );
 };
