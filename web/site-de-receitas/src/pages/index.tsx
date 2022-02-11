@@ -4,13 +4,15 @@ import FirstFoldBackgroundImage from '@/assets/images/home_first_folk_background
 import FirstFoldBackgroundDetail from '@/assets/images/home_first_folk_background-detail.svg';
 import { BiSearch } from 'react-icons/bi';
 
+import TopRecipeItemHome from '@/components/TopRecipeItemHome';
+
 import {
   FirstFold,
   FirstFoldContainer,
   FirstFoldDetails,
   InputContainer,
   TopReciperSection,
-  TopReciperSectionItem,
+  TopReciperSectionContainer,
 } from '../styles/pages/Home';
 
 const Home: React.FC = () => {
@@ -42,7 +44,15 @@ const Home: React.FC = () => {
         </FirstFoldDetails>
       </FirstFold>
       <TopReciperSection>
-        <TopReciperSectionItem />
+        <h2>Top receitas da semana</h2>
+        <TopReciperSectionContainer>
+          <TopRecipeItemHome position={1} />
+          <TopRecipeItemHome position={2} />
+          <TopRecipeItemHome position={3} />
+          <TopRecipeItemHome position={4} />
+          <TopRecipeItemHome position={5} />
+          <TopRecipeItemHome position={6} />
+        </TopReciperSectionContainer>
       </TopReciperSection>
     </>
   );

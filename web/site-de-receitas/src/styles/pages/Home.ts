@@ -17,6 +17,7 @@ export const FirstFoldContainer = styled.div`
   position: relative;
   z-index: 1;
   .main-image {
+    margin-top: 46px;
     margin-bottom: 24px;
     width: 100%;
     max-width: 456px;
@@ -140,51 +141,27 @@ export const FirstFoldDetails = styled.div`
   }
 `;
 
+export const TopReciperSectionContainer = styled.div`
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto 1fr 1fr 2fr auto auto;
+`;
+
 export const TopReciperSection = styled.div`
+  max-width: 1120px;
+  margin: 0 auto;
   margin-top: 56px;
+
   h2 {
     font-family: Roboto Slab;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 36px;
     line-height: 36px;
 
     color: #3f3d3c;
 
     margin-bottom: 32px;
-  }
-`;
-
-export const TopReciperSectionItem = styled.div`
-  background-color: #fff;
-  color: #444;
-  overflow: hidden;
-  position: relative;
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-
-  .title-box {
-    position: absolute;
-    bottom: 0;
-    height: 72px;
-    width: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(105, 105, 105, 0) -2.24%,
-      rgba(0, 0, 0, 0.56) 67.52%
-    );
-    h3 {
-      font-family: Roboto Slab;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 24px;
-      line-height: 24px;
-
-      padding: 24px;
-    }
   }
 `;
