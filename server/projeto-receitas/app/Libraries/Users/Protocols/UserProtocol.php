@@ -23,6 +23,7 @@ class UserProtocol implements ProtocolPassingParamets
     private $imgCapa;
     private $statusAtivo;
     private $biografia;
+    private $isEncryptPassword = true;
 
     public function getName(){
         return $this->nome;
@@ -52,6 +53,10 @@ class UserProtocol implements ProtocolPassingParamets
         return $this->biografia;
     }
 
+    public function getIsEncryptPassword(): bool{
+        return $this->isEncryptPassword;
+    }
+
     public function setName($name){
         $name = ValidationLib::sanitizarString(trim($name));
         if(count(explode(' ', $name)) < 2){
@@ -72,7 +77,9 @@ class UserProtocol implements ProtocolPassingParamets
         if(empty($password)){
             throw UserProtocolException::passwordEmpty();
         }
-        $password = Hash::make($password);
+        if($this->getIsEncryptPassword()) {
+            $password = Hash::make($password);
+        }
         $this->password = $password;
     }
 
@@ -96,6 +103,10 @@ class UserProtocol implements ProtocolPassingParamets
     public function setBiografia($biografia){
         $biografia = ValidationLib::sanitizarString(trim($biografia));
         $this->biografia = $biografia;
+    }
+
+    public function setIsEncryptPassword($isEncrypt = true){
+        $this->isEncryptPassword = $isEncrypt;
     }
 }
 

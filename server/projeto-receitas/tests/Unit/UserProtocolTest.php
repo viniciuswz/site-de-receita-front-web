@@ -92,6 +92,15 @@ class UserProtocolTest extends TestCase
         $this->assertTrue(Hash::check($pass, $hash));
     }
 
+    public function test_check_if_password_not_encrypt_defined_manually()
+    {
+        $pass = 'testpassword';
+        $user = new UserProtocol();
+        $user->setIsEncryptPassword(false);
+        $user->setPassword($pass);
+        $this->assertEquals($pass, $user->getPassword());
+    }
+
     public function test_set_empty_passoword_returns_exception()
     {
         $this->expectException(UserProtocolException::class);
@@ -119,5 +128,15 @@ class UserProtocolTest extends TestCase
         $user = new UserProtocol();
         $user->setBiografia($textoComScript);
         $this->assertEquals($texto, $user->getBiografia());
+    }
+
+    public function test_set_invalid_number_type_user()
+    {
+        $this->expectException(UserProtocolException::class);
+        $this->expectExceptionCode(400);
+        $this->expectExceptionMessage("Tipo Usuário inválido");
+
+        $user = new UserProtocol();
+        $user->setTipoUsuarioId('invalid');
     }
 }
