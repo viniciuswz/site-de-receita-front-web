@@ -24,5 +24,11 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function () {
     Route::post('logout',  [App\Http\Controllers\AuthControllerExemple::class, 'logout']);
 });
 
+Route::prefix('v1')->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::post('',  [App\Http\Controllers\UsuarioController::class, 'insert']);
+    });
+});
+
 Route::post('login',  [App\Http\Controllers\AuthControllerExemple::class, 'login']);
 
