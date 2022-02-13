@@ -43,13 +43,14 @@ export const FirstFoldContainer = styled.div`
   }
 
   @media screen and (max-width: 481px) {
-    padding-top: 24px;
+    padding: 24px 16px;
     h1 {
-      font-size: 36px;
-      line-height: 36px;
+      font-size: 30px;
+      line-height: 30px;
 
-      padding: 20px;
-      margin: 0;
+      margin: 20px 0;
+
+      width: 90%;
     }
 
     .main-image {
@@ -87,7 +88,12 @@ export const InputContainer = styled.div`
   }
 
   @media screen and (max-width: 1024px) {
-    margin-bottom: 84px;
+    margin-bottom: 34px;
+  }
+
+  @media screen and (max-width: 481px) {
+    width: 100%;
+    max-width: none;
   }
 `;
 
@@ -141,17 +147,29 @@ export const FirstFoldDetails = styled.div`
   }
 `;
 
-export const TopReciperSectionContainer = styled.div`
+export const TopReciperSectionGridContainer = styled.div`
   display: grid;
   grid-gap: 32px;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto auto 1fr 1fr 2fr auto auto;
+  grid-template-areas:
+    'a a a a a a a b b b b b'
+    'a a a a a a a b b b b b'
+    'c c c c c c d d d d d d'
+    'c c c c c c d d d d d d'
+    'e e e e e e d d d d d d'
+    'e e e e e e f f f f f f'
+    'e e e e e e f f f f f f';
+  @media screen and (max-width: 1024px) and (min-width: 769px) {
+    grid-gap: 24px;
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-gap: 16px;
+  }
 `;
 
 export const TopReciperSection = styled.div`
-  max-width: 1120px;
-  margin: 0 auto;
   margin-top: 56px;
+  padding: 0 24px;
 
   h2 {
     font-family: Roboto Slab;
@@ -164,4 +182,131 @@ export const TopReciperSection = styled.div`
 
     margin-bottom: 32px;
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 16px;
+    margin-top: 36px;
+  }
+
+  @media screen and (max-width: 481px) {
+    h2 {
+      font-size: 24px;
+      line-height: 24px;
+      margin-bottom: 24px;
+    }
+  }
+`;
+
+export const TopReciperSectionContainer = styled.div`
+  max-width: 1120px;
+  margin: 0 auto;
+`;
+
+export const CategorySection = styled.div`
+  margin: 56px 24px;
+  margin-bottom: 0;
+  padding-bottom: 32px;
+
+  @media screen and (max-width: 481px) {
+    margin: 32px 16px;
+    margin-bottom: 0;
+    padding-bottom: 16px;
+  }
+`;
+
+export const CategorySectionContainer = styled.div`
+  max-width: 1120px;
+  margin: 0 auto;
+
+  h2 {
+    font-family: Roboto Slab;
+    font-size: 36px;
+    line-height: 36px;
+    color: #3f3d3c;
+    margin-bottom: 16px;
+    width: 100%;
+    text-align: center;
+  }
+  p {
+    font-family: Roboto Slab;
+    font-size: 24px;
+    line-height: 24px;
+    font-style: normal;
+    font-weight: 400;
+    color: #3f3d3c;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    h2 {
+      margin-bottom: 8px;
+      font-size: 24px;
+      line-height: 24px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 16px;
+      margin-bottom: 32px;
+    }
+  }
+`;
+
+export const CategorySectionGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 32px;
+  a {
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: auto;
+    }
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.35);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        font-family: Roboto Slab;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        text-align: center;
+        color: #f4ede8;
+        padding: 8px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) and (min-width: 482px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 24px;
+  }
+  @media screen and (max-width: 481px) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+  }
+`;
+
+export const HomeBackground = styled.main`
+  background-color: #fff8f2;
 `;
