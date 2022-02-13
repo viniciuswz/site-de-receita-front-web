@@ -4,51 +4,21 @@ namespace App\Libraries\Users\Factories;
 
 use App\Libraries\Users\Exceptions\ExceptionLib\UserProtocolException;
 use App\Libraries\Users\Protocols\UserProtocol;
-
+use App\Libraries\Utilities\NodeField\ValidateRequest;
 use Illuminate\Http\Request;
 
 class InsertUserFactory
 {
     public static function createUserProtocolByRequest(Request $request): UserProtocol {
         $userProtocol = new UserProtocol();
-        $fields = [
-            [
-                'fieldUser' => 'name',
-                'functionUser' => 'setName',
-                'fieldRequest' => 'name',
-                'functionRequest' => "get"
-            ],
-            [
-                'fieldUser' => 'email',
-                'functionUser' => 'setEmail',
-                'fieldRequest' => 'email',
-                'functionRequest' => "get"
-            ],
-            [
-                'fieldUser' => 'password',
-                'functionUser' => 'setPassword',
-                'fieldRequest' => 'password',
-                'functionRequest' => "get"
-            ],
-            [
-                'fieldUser' => 'profile-img',
-                'functionUser' => 'setImgPerfil',
-                'fieldRequest' => 'profile-img',
-                'functionRequest' => "file"
-            ],
-        ];
-        $errors = [];
-        foreach($fields as $f) {
-            try {
-                $fieldValue = $request->{$f['functionRequest']}($f['fieldRequest']);
-                $userProtocol->{$f['functionUser']}($fieldValue);
-            } catch (\Exception $e) {
-                $errors[] = $e->getMessage();
-            }
-        }
+        $validateRequest = new ValidateRequest($userProtocol, $request);
+        $validateRequest::createNodeValidate($validateRequest, 'name', 'setName', 'name', 'get');
+        $validateRequest::createNodeValidate($validateRequest, 'email', 'setEmail', 'email', 'get');
+        $validateRequest::createNodeValidate($validateRequest, 'password', 'setPassword', 'password', 'get');
+        $validateRequest::createNodeValidate($validateRequest, 'profile-img', 'setImgPerfil', 'profile-img', 'file');
 
-        if(! empty($errors)){
-            throw UserProtocolException::multiplesErrors($errors);
+        if(! $validateRequest->validate()){
+            throw UserProtocolException::multiplesErrors($validateRequest->getErrors());
         }
 
         $userProtocol->setTipoUsuarioId(UserProtocol::$TIPO_USUARIO_COMUM);

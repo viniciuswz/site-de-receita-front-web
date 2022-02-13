@@ -5,10 +5,11 @@ namespace App\Libraries\Users\Protocols;
 use Illuminate\Support\Facades\Hash;
 
 use App\Libraries\Users\Exceptions\ExceptionLib\UserProtocolException;
+use App\Libraries\Utilities\Interfaces\ProtocolPassingParamets;
 use App\Libraries\Utilities\ValidationLib;
 use App\Libraries\Utilities\Upload\UploadImgUser;
 
-class UserProtocol
+class UserProtocol implements ProtocolPassingParamets
 {
 
     public static $TIPO_USUARIO_COMUM = 3;
