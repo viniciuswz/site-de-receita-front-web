@@ -32,3 +32,4 @@ Route::prefix('v1')->group(function () {
 
 Route::post('login',  [App\Http\Controllers\AuthControllerExemple::class, 'login']);
 
+Route::apiResource('receita', 'App\Http\Controllers\ReceitaController');
