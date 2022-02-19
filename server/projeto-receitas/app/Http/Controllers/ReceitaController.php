@@ -19,7 +19,7 @@ class ReceitaController extends Controller
      */
     public function index()
     {
-        $receitas = Receita::all();
+        $receitas = $this->receita->with('localPreparo')->get();
         return $receitas;
     }
 
@@ -34,6 +34,7 @@ class ReceitaController extends Controller
         $request->validate($this->receita->rules(), $this->receita->feedback());
 
         $receita = $this->receita->create([
+            'local_preparo_id' => $request->local_preparo_id,
             'titulo' => $request->titulo,
             'imagens' => $request->imagens,
             'tempo_preparo' => $request->tempo_preparo,
@@ -51,7 +52,7 @@ class ReceitaController extends Controller
      */
     public function show($id)
     {
-        $receita = $this->receita->find($id);
+        $receita = $this->receita->with('localPreparo')->find($id);
 
         if (!$receita) return response()->json(['erro' => 'Recurso pesquisado não existe!'], 404);
 

@@ -10,10 +10,11 @@ class Receita extends Model
     use HasFactory;
 
     protected $table = 'receita';
-    protected $fillable = ['titulo', 'imagens', 'tempo_preparo', 'qtd_porcoes', 'status_ativo', 'status_aprovacao'];
+    protected $fillable = ['local_preparo_id','titulo', 'imagens', 'tempo_preparo', 'qtd_porcoes', 'status_ativo', 'status_aprovacao'];
 
     public function rules() {
         return [
+            'local_preparo_id'=> 'exists:local_preparo,id',
             'titulo' => 'required|min:5',
             'imagens' => 'required',
             'tempo_preparo' => 'required|numeric|min:1|max:4320',
@@ -33,6 +34,11 @@ class Receita extends Model
             'qtd_porcoes.max' => 'O máximo de porções por receita é de 100 unidade!s',
             'status_aprovacao.boolean' => 'O staus de aprovação deve ser no formato booleano!',
         ];
+    }
+
+    public function localPreparo()
+    {
+        return $this->belongsTo('App\Models\LocalPreparo');
     }
 
 }

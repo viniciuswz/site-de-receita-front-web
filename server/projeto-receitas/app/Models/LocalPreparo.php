@@ -28,4 +28,9 @@ class LocalPreparo extends Model
         ];
     }
 
+    public function receitas()
+    {
+        return $this->hasMany('App\Models\Receita');
+    }
+
 }

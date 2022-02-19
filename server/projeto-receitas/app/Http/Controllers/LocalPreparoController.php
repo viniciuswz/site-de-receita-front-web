@@ -20,7 +20,7 @@ class LocalPreparoController extends Controller
      */
     public function index()
     {
-        $locaisPreparo = LocalPreparo::all();
+        $locaisPreparo = $this->localPreparo->with('receitas')->get();
         return $locaisPreparo;
     }
 
