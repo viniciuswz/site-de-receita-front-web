@@ -34,3 +34,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('receita', 'App\Http\Controllers\ReceitaController');
 Route::get('/receita/findByTittle/{title}', 'App\Http\Controllers\ReceitaController@findByTitle');
+
+Route::apiResource('localPreparo', 'App\Http\Controllers\LocalPreparoController');
