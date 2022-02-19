@@ -59,6 +59,18 @@ class ReceitaController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  str  $titulo
+     * @return \Illuminate\Http\Response
+     */
+    public function findByTitle($titulo)
+    {
+        $receita = $this->receita->where('titulo', 'like', '%'.$titulo.'%')->get();
+        return $receita;
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
