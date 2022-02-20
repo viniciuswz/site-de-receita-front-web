@@ -3,8 +3,11 @@ import Logo from '@/assets/images/logo.svg';
 import { BiSearch, BiChevronDown } from 'react-icons/bi';
 import { IoCartOutline } from 'react-icons/io5';
 import { FaRegBell } from 'react-icons/fa';
-
 import Link from 'next/link';
+
+import { useSpring } from 'react-spring';
+
+import { useState } from 'react';
 import {
   Container,
   Content,
@@ -21,11 +24,17 @@ import {
 } from './styles';
 
 const Header: React.FC = () => {
+  const [open, setOpen] = useState(false);
+  const styles = useSpring({ maxHeight: open ? 400 : 0 });
   return (
     <Content>
       <Container>
         <Logo />
-        <ButtonMenu>
+        <ButtonMenu
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
           <div>
             <span />
             <span />
@@ -59,7 +68,7 @@ const Header: React.FC = () => {
           </MyAccountProfile>
         </MyAccountHeaderContainer>
       </Container>
-      <MenuContent>
+      <MenuContent style={{ ...styles }}>
         <MenuContainer>
           <MenuContainerLeft>
             <a href="#" className="category">

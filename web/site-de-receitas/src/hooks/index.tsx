@@ -1,11 +1,12 @@
 import { AuthProvider } from './Auth';
 import { ToastProvider } from './Toast';
+import { HeaderMobileNavigationProvider } from './HeaderMobileNavigation';
 
 const AppProvider: React.FC = ({ children }) => {
   return (
-    // <AuthProvider>
-    <ToastProvider>{children}</ToastProvider>
-    // </AuthProvider>
+    <HeaderMobileNavigationProvider>
+      <ToastProvider>{children}</ToastProvider>
+    </HeaderMobileNavigationProvider>
   );
 };
 

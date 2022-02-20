@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { animated } from 'react-spring';
 
 export const Content = styled.header`
   width: 100%;
@@ -134,13 +135,15 @@ export const MyAccountProfile = styled.div`
   }
 `;
 
-export const MenuContent = styled.div`
+export const MenuContent = styled(animated.div)`
   position: absolute;
   top: 104px;
   width: 100%;
   height: auto;
+  max-height: 0px;
   border-bottom: 4px solid #ff8a00;
   background-color: #fff;
+  overflow: hidden;
 `;
 
 export const MenuContainer = styled.div`
