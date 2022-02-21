@@ -10,7 +10,8 @@ use App\Libraries\Users\Factories\InsertUserFactory;
 
 class UsuarioController extends Controller
 {
-    public function insert(Request $request) {
+    public function insert(Request $request)
+    {
         try {
             $userProtocol = InsertUserFactory::createUserProtocolByRequest($request);
             $userLib = new UserLib();
@@ -25,7 +26,7 @@ class UsuarioController extends Controller
                 'status' => false,
                 'response' => $usu->getMessage()
             ], 202);
-        } catch (\Exception $usu) {
+        } catch (\Exception $e) {
             return response([
                 'status' => false,
                 'response' => 'Server Error'
@@ -33,5 +34,3 @@ class UsuarioController extends Controller
         }
     }
 }
-
-

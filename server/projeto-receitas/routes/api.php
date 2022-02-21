@@ -19,16 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('v1')->middleware('jwt.auth')->group(function () {
-    Route::post('me',  [App\Http\Controllers\AuthControllerExemple::class, 'me']);
-    Route::post('refresh',  [App\Http\Controllers\AuthControllerExemple::class, 'refresh']);
-    Route::post('logout',  [App\Http\Controllers\AuthControllerExemple::class, 'logout']);
+    Route::post('me',  [App\Http\Controllers\UserAuthController::class, 'me']);
+    Route::post('logout',  [App\Http\Controllers\UserAuthController::class, 'logout']);
 });
 
 Route::prefix('v1')->group(function () {
+    Route::post('login',  [App\Http\Controllers\UserAuthController::class, 'login']);
     Route::prefix('user')->group(function () {
         Route::post('',  [App\Http\Controllers\UsuarioController::class, 'insert']);
     });
 });
-
-Route::post('login',  [App\Http\Controllers\AuthControllerExemple::class, 'login']);
-
