@@ -10,6 +10,8 @@ interface HeaderMobileNavigationContextData {
   closeMenuLeft(): void;
   openMenuLeft(): void;
   isMenuLeftOpen: boolean;
+  isSearchOpen: boolean;
+  toggleIsSearchOpen(): void;
 }
 
 const HeaderMobileNavigationContext =
@@ -19,6 +21,7 @@ const HeaderMobileNavigationContext =
 
 const HeaderMobileNavigationProvider: React.FC = ({ children }) => {
   const [isMenuLeftOpen, setIsMenuLeftOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const [currentStep, setCurrentStep] = useState<StepsAvailable>('initial');
   const [currentTransition, setCurrentTransition] = useState<StepsAvailable[]>(
@@ -53,6 +56,10 @@ const HeaderMobileNavigationProvider: React.FC = ({ children }) => {
     }, 200);
   }, [changeStep]);
 
+  const toggleIsSearchOpen = useCallback(() => {
+    setIsSearchOpen(oldValue => !oldValue);
+  }, []);
+
   return (
     <HeaderMobileNavigationContext.Provider
       value={{
@@ -63,6 +70,8 @@ const HeaderMobileNavigationProvider: React.FC = ({ children }) => {
         closeMenuLeft,
         openMenuLeft,
         isMenuLeftOpen,
+        toggleIsSearchOpen,
+        isSearchOpen,
       }}
     >
       {children}
