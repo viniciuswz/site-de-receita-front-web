@@ -7,6 +7,7 @@ export const Container = styled.div`
   margin: 0 auto;
   grid-gap: 32px;
   padding: 24px;
+  margin-top: 55px;
 `;
 
 export const ContentLeft = styled.div`
