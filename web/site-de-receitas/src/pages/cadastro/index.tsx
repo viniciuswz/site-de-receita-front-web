@@ -1,5 +1,5 @@
 import { Container, LeftSide, RightSide } from '@/styles/Cadastro';
-import SignInForm from '../../components/Welcome/SignInForm';
+import SignInForm from '../../components/commom/Welcome/SignInForm';
 
 const Cadastro: React.FunctionComponent = () => {
   return (
