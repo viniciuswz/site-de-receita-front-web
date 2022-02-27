@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin-bottom: 40px;
+  width: 100%;
 `;
 
 export const Header = styled.div`
@@ -10,6 +11,7 @@ export const Header = styled.div`
   align-items: center;
   margin-bottom: 32px;
   margin-top: 40px;
+  width: 100%;
 
   h3 {
     font-family: Roboto Slab;
@@ -55,12 +57,16 @@ export const RatingListFilterDropdow = styled.div``;
 
 export const RatingListItem = styled.div`
   display: flex;
+  width: 100%;
+
   & ~ div {
     margin-top: 16px;
   }
 `;
 
-export const RatingListItemContent = styled.div``;
+export const RatingListItemContent = styled.div`
+  width: 100%;
+`;
 
 export const RatingListItemHeader = styled.div`
   display: flex;
@@ -134,19 +140,25 @@ export const RatingListItemText = styled.p`
 `;
 
 export const RatingListPhotosUploaded = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
   margin-top: 8px;
+  /* flex: 1; */
+  /* width: 100%; */
+  /* max-width: 400px; */
+
+  border-radius: 8px;
+
   ul {
     list-style: none;
     display: flex;
+
     li {
       object-fit: cover;
       aspect-ratio: 16/9;
       position: relative;
       border-radius: 8px;
       overflow: hidden;
-      width: 163px;
+      min-width: 163px;
 
       img {
         width: 100%;
@@ -184,6 +196,32 @@ export const RatingListPhotosUploaded = styled.div`
     svg {
       width: 16px;
       height: 16px;
+    }
+  }
+
+  .photosUploaded {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .swiper-wrapper {
+    .swiper-slide {
+      /* width: 20%; */
+      height: 100%;
+      margin-right: 16px;
+
+      &.swiper-slide-thumb-active {
+        opacity: 1;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: 8px;
     }
   }
 `;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin-top: 48px;
+  width: 100%;
   h2 {
     font-family: Roboto Slab;
     font-style: normal;
@@ -17,6 +18,7 @@ export const Container = styled.div`
 
 export const RatingDetailsContainer = styled.div`
   display: flex;
+  width: 100%;
 `;
 export const RatingDetailsGeneral = styled.div`
   display: flex;

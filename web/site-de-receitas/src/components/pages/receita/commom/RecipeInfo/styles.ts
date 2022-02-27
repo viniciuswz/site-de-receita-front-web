@@ -57,6 +57,7 @@ export const ProfileInfoButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: transparent;
 `;
 
 export const RecipeCommomInfo = styled.div`
@@ -152,6 +153,7 @@ export const RecipeShare = styled.ul`
   margin-top: 24px;
   display: flex;
   list-style: none;
+  margin-bottom: 32px;
   li {
     width: 40px;
     height: 40px;

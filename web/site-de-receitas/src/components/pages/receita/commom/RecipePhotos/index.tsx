@@ -31,34 +31,64 @@ const RecipePhotos: React.FC = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-1.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-2.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-3.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-4.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-5.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-6.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-7.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-8.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-9.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-10.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
       </Swiper>
       <Swiper
@@ -72,34 +102,64 @@ const RecipePhotos: React.FC = () => {
         className="thumbs"
       >
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-1.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-2.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-3.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-4.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-5.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-6.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-7.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-8.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-9.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-10.jpg"
+            alt="uhul yeah"
+          />
         </SwiperSlide>
       </Swiper>
     </Container>

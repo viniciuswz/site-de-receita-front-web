@@ -1,3 +1,6 @@
+/* eslint-disable import/no-unresolved */
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 import { BiChevronDown } from 'react-icons/bi';
 import { AiFillStar } from 'react-icons/ai';
 
@@ -56,14 +59,21 @@ const RatingList: React.FC = () => {
               itaque nisi aperiam nemo eos?
             </RatingListItemText>
             <RatingListPhotosUploaded>
-              <ul>
-                <li>
+              <Swiper
+                spaceBetween={16}
+                slidesPerView={2}
+                className="photosUploaded"
+              >
+                <SwiperSlide>
                   <img src="/images/receitas/default_image.png" alt="recipe" />
-                </li>
-                <li>
+                </SwiperSlide>
+                <SwiperSlide>
                   <img src="/images/receitas/default_image.png" alt="recipe" />
-                </li>
-              </ul>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src="/images/receitas/default_image.png" alt="recipe" />
+                </SwiperSlide>
+              </Swiper>
               <button type="button">+2fotos</button>
             </RatingListPhotosUploaded>
             <RatingListOpinion>
@@ -109,14 +119,21 @@ const RatingList: React.FC = () => {
               itaque nisi aperiam nemo eos?
             </RatingListItemText>
             <RatingListPhotosUploaded>
-              <ul>
-                <li>
+              <Swiper
+                spaceBetween={16}
+                slidesPerView={2}
+                className="photosUploaded"
+              >
+                <SwiperSlide>
                   <img src="/images/receitas/default_image.png" alt="recipe" />
-                </li>
-                <li>
+                </SwiperSlide>
+                <SwiperSlide>
                   <img src="/images/receitas/default_image.png" alt="recipe" />
-                </li>
-              </ul>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src="/images/receitas/default_image.png" alt="recipe" />
+                </SwiperSlide>
+              </Swiper>
               <button type="button">+2fotos</button>
             </RatingListPhotosUploaded>
             <RatingListOpinion>

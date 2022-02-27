@@ -11,7 +11,6 @@ import {
 const RecipeDetails: React.FC = () => {
   return (
     <>
-      <h2>Avaliações</h2>
       <RatingDetailsContainer>
         <RatingDetailsGeneral>
           <span>4.6</span>

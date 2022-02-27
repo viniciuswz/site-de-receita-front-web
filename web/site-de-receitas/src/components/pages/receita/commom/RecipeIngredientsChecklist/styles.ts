@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-top: 32px;
+  margin-bottom: 32px;
   h2 {
     font-family: Roboto Slab;
     font-style: normal;
