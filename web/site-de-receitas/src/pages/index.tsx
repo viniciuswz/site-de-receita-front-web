@@ -54,12 +54,12 @@ const Home: React.FC = () => {
           <TopReciperSectionContainer>
             <h2>Top receitas da semana</h2>
             <TopReciperSectionGridContainer>
-              <TopRecipeItemHome position={1} href="/receita" />
-              <TopRecipeItemHome position={2} href="/receita" />
-              <TopRecipeItemHome position={3} href="/receita" />
-              <TopRecipeItemHome position={4} href="/receita" />
-              <TopRecipeItemHome position={5} href="/receita" />
-              <TopRecipeItemHome position={6} href="/receita" />
+              <TopRecipeItemHome position={1} href="/receita/strogonoff" />
+              <TopRecipeItemHome position={2} href="/receita/strogonoff" />
+              <TopRecipeItemHome position={3} href="/receita/strogonoff" />
+              <TopRecipeItemHome position={4} href="/receita/strogonoff" />
+              <TopRecipeItemHome position={5} href="/receita/strogonoff" />
+              <TopRecipeItemHome position={6} href="/receita/strogonoff" />
             </TopReciperSectionGridContainer>
           </TopReciperSectionContainer>
         </TopReciperSection>
