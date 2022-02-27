@@ -6,6 +6,7 @@ import {
   RecipeIngredientsChecklist,
   RecipeSteps,
   RecipeRating,
+  RecipeDoubts,
 } from '../commom';
 
 const DesktopRecipePageGrid: React.FC = () => {
@@ -15,6 +16,7 @@ const DesktopRecipePageGrid: React.FC = () => {
         <RecipePhotos />
         <RecipeSteps />
         <RecipeRating />
+        <RecipeDoubts />
       </ContentLeft>
       <ContentRight>
         <RecipeInfo />
