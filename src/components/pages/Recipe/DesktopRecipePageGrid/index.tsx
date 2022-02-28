@@ -7,7 +7,7 @@ import {
   RecipeSteps,
   RecipeRating,
   RecipeDoubts,
-} from '../commom';
+} from '../Common';
 
 const DesktopRecipePageGrid: React.FC = () => {
   return (

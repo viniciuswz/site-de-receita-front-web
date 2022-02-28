@@ -5,7 +5,7 @@ import {
   RecipeSteps,
   RecipeRating,
   RecipeDoubts,
-} from '../commom';
+} from '../Common';
 
 import { Container } from './styles';
 

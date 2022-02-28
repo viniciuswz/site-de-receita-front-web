@@ -11,7 +11,7 @@ import {
   ProfileInfoPhoto,
   ProfileInfo,
   ProfileInfoButton,
-  RecipeCommomInfo,
+  RecipeCommonInfo,
   RecipeRating,
   RecipeDetails,
   RecipeDescription,
@@ -33,10 +33,10 @@ const RecipeInfo: React.FC = () => {
           <FiMoreHorizontal size={24} />
         </ProfileInfoButton>
       </Profile>
-      <RecipeCommomInfo>
+      <RecipeCommonInfo>
         <h1>Strogonoff de frango</h1>
         <span>Categoria</span>
-      </RecipeCommomInfo>
+      </RecipeCommonInfo>
       <RecipeRating>
         <p>
           <span>4.6</span> de 5

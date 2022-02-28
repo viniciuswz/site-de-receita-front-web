@@ -60,7 +60,7 @@ export const ProfileInfoButton = styled.button`
   background-color: transparent;
 `;
 
-export const RecipeCommomInfo = styled.div`
+export const RecipeCommonInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 24px;
