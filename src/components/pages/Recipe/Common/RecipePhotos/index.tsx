@@ -28,6 +28,7 @@ const RecipePhotos: React.FC = () => {
         navigation
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
+        centeredSlides
         className="mySwiper"
       >
         <SwiperSlide>

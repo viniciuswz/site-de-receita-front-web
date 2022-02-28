@@ -1,3 +1,7 @@
 import CategoryBanner from './CategoryBanner';
 
-export { CategoryBanner };
+import CategorySubcategorySlide from './CategorySubcategorySlide';
+
+import CategoryListRecipes from './CategoryListRecipes';
+
+export { CategoryBanner, CategorySubcategorySlide, CategoryListRecipes };

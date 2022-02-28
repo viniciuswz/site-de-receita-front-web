@@ -2,14 +2,22 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+
+  background-color: #25252d;
+  margin-bottom: 64px;
 `;
 
 export const BannerLeft = styled.div`
+  display: flex;
+  justify-content: center;
   width: 50%;
   border-bottom-right-radius: 160px;
   object-fit: cover;
+  overflow: hidden;
+  margin-right: 32px;
+  max-height: 263px;
   img {
-    aspect-ratio: 21/9;
+    align-self: center;
     width: 100%;
     height: auto;
   }
