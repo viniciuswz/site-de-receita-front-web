@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-
+  position: relative;
   background-color: #25252d;
   margin-bottom: 64px;
+  width: 100%;
 `;
 
 export const BannerLeft = styled.div`
@@ -20,6 +21,24 @@ export const BannerLeft = styled.div`
     align-self: center;
     width: 100%;
     height: auto;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    border-bottom-right-radius: 0;
+    margin-right: 0px;
+    max-height: none;
+
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+  @media screen and (max-width: 768px) and (min-width: 650px) {
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 `;
 
@@ -51,5 +70,18 @@ export const BannerRight = styled.div`
     color: #f4ede8;
 
     max-width: 504px;
+    width: 90%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 32px;
+
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  @media screen and (max-width: 481px) {
+    padding: 16px;
   }
 `;

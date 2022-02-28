@@ -25,16 +25,24 @@ const CategorySubcategorySlide: React.FC = () => {
           clickable: true,
         }}
         breakpoints={{
-          640: {
+          320: {
             slidesPerView: 2,
             slidesPerGroup: 2,
-
             spaceBetween: 8,
           },
-          768: {
+          481: {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            spaceBetween: 8,
+          },
+          550: {
             slidesPerView: 4,
             slidesPerGroup: 2,
-
+            spaceBetween: 16,
+          },
+          768: {
+            slidesPerView: 6,
+            slidesPerGroup: 4,
             spaceBetween: 16,
           },
           1024: {

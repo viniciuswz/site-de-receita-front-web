@@ -1,13 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: grid;
-  grid-column: span 4;
-  /* grid-auto-rows: max-content; */
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0px 2px 8px 1px rgb(0 0 0 / 17%);
-
   img {
     width: 100%;
     height: auto;
@@ -126,7 +119,6 @@ export const Info = styled.div`
     font-size: 20px;
     line-height: 20px;
     margin-bottom: 8px;
-    /* identical to box height, or 100% */
 
     text-align: center;
 
@@ -138,7 +130,7 @@ export const Info = styled.div`
     font-weight: normal;
     font-size: 16px;
     line-height: 16px;
-    /* identical to box height, or 100% */
+    text-align: center;
 
     color: #8f8f8f;
   }

@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   max-width: 1120px;
-  margin: 0 auto;
+  width: 100%;
+
+  padding: 0 32px;
   margin-bottom: 64px;
 
   h2 {
@@ -87,6 +89,15 @@ export const Container = styled.div`
       color: #3f3d3c;
 
       margin-top: 8px;
+    }
+  }
+
+  @media screen and (max-width: 481px) {
+    padding: 0 16px;
+
+    h2 {
+      font-size: 24px;
+      line-height: 24px;
     }
   }
 `;

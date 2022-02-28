@@ -29,7 +29,7 @@ const Header: React.FC = () => {
   return (
     <Content>
       <Container>
-        <Logo />
+        <Logo className="logo" />
         <ButtonMenu
           onClick={() => {
             setOpen(!open);

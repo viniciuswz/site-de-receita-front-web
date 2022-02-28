@@ -21,8 +21,9 @@ export const Container = styled.div`
   position: relative;
   z-index: 10;
   position: fixed;
-  top: 62px;
+  top: 0px;
   width: 100%;
+  z-index: 20;
 `;
 
 export const InputContainer = styled.div`

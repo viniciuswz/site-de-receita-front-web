@@ -6,6 +6,8 @@ export const Content = styled.header`
   background-color: #ff8a00;
   position: relative;
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 10;
 `;
 
@@ -18,6 +20,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .logo {
+    margin-left: 32px;
+  }
 `;
 
 export const ButtonMenu = styled.button`
@@ -27,6 +33,7 @@ export const ButtonMenu = styled.button`
   align-items: center;
   border: 0;
   background-color: transparent;
+  margin: 0 8px;
 
   div {
     width: 22px;
@@ -55,9 +62,10 @@ export const ButtonMenu = styled.button`
 export const SearchContainer = styled.div`
   background-color: #f4ede8;
   max-width: 458px;
-  width: 100%;
+  width: 90%;
   height: 48px;
   border-radius: 8px;
+  margin: 0 8px;
 
   display: flex;
 
@@ -110,6 +118,10 @@ export const MyAccountProfile = styled.div`
     div {
       width: 56px;
       height: 56px;
+
+      min-width: 56px;
+      min-height: 56px;
+
       border-radius: 50%;
       margin-right: 8px;
       border: 2px solid #f4ede8;
