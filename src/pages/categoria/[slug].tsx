@@ -4,11 +4,13 @@ import CategoryPage from '@/components/pages/Category';
 import HeaderResponsive from '@/components/common/HeaderResponsive';
 
 const Categoria: React.FC = () => {
-  const { slug } = useRouter();
+  const router = useRouter();
+
+  const { slug } = router.query;
   return (
     <>
+      nome da categoria: {slug}
       <HeaderResponsive />
-
       <CategoryPage />
     </>
   );
