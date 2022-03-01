@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import FirstFoldImage from '@/assets/images/home_first_folk_image.svg';
+// import FirstFoldImage from '@/assets/images/home_first_folk_image.svg';
 import FirstFoldBackgroundImage from '@/assets/images/home_first_folk_background-image.svg';
 import FirstFoldBackgroundDetail from '@/assets/images/home_first_folk_background-detail.svg';
 import { BiSearch } from 'react-icons/bi';
