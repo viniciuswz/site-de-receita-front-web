@@ -4,7 +4,7 @@ import FirstFoldBackgroundImage from '@/assets/images/home_first_folk_background
 import FirstFoldBackgroundDetail from '@/assets/images/home_first_folk_background-detail.svg';
 import { BiSearch } from 'react-icons/bi';
 
-import TopRecipeItemHome from '@/components/pages/home/TopRecipeItemHome';
+import TopRecipeItemHome from '@/components/pages/Home/TopRecipeItemHome';
 
 import Link from 'next/link';
 import {

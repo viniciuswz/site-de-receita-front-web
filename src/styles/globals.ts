@@ -9,6 +9,17 @@ export default createGlobalStyle`
 
   body {
     background-color: ${props => props.theme.colors.background};
+
+  }
+
+  header {
+    & ~ div{
+      margin-top: 108px;
+
+      @media screen and (max-width: 768px) {
+        margin-top: 63px;
+      }
+    }
   }
 
   input{

@@ -1,5 +1,5 @@
 import { Container, LeftSide, RightSide } from '@/styles/Login';
-import LoginForm from '../../components/commom/Welcome/LoginForm';
+import LoginForm from '../../components/common/Welcome/LoginForm';
 
 const Login: React.FunctionComponent = () => {
   return (

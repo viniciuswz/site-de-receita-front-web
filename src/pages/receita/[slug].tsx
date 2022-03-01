@@ -1,10 +1,10 @@
 import { Container } from '@/styles/Receita';
 
 import { useRouter } from 'next/router';
-import HeaderResponsive from '@/components/commom/HeaderResponsive';
-import RecipePage from '@/components/pages/receita';
+import HeaderResponsive from '@/components/common/HeaderResponsive';
+import RecipePage from '@/components/pages/Recipe';
 
-const Login: React.FunctionComponent = () => {
+const Receita: React.FunctionComponent = () => {
   const router = useRouter();
 
   const { slug } = router.query;
@@ -20,4 +20,4 @@ const Login: React.FunctionComponent = () => {
   );
 };
 
-export default Login;
+export default Receita;
