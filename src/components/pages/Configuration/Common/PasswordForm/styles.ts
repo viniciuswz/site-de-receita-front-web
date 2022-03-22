@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  padding-bottom: 40px;
 
   h1 {
     font-family: 'Roboto Slab';
@@ -9,6 +10,7 @@ export const Container = styled.div`
     font-weight: 500;
     font-size: 24px;
     line-height: 24px;
+    margin-bottom: 32px;
 
     color: #3f3d3c;
   }
@@ -21,6 +23,9 @@ export const Container = styled.div`
     line-height: 24px;
 
     color: #3f3d3c;
+
+    margin-top: 40px;
+    margin-bottom: 32px;
   }
 
   h3 {
@@ -31,6 +36,26 @@ export const Container = styled.div`
     line-height: 16px;
 
     color: #617480;
+  }
+
+  form {
+    width: 100%;
+  }
+`;
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 24px 32px;
+  max-width: 534px;
+
+  .item-50 {
+    display: grid;
+    grid-column: span 3;
+  }
+  .item-100 {
+    display: grid;
+    grid-column: span 6;
   }
 `;
 

@@ -95,7 +95,6 @@ const DefaultInput: React.FC<DefaultInputProps> = ({
           {!inputShowPassword ? <IconShowPassword /> : <IconHidePassword />}
         </PasswordButton>
       )}
-      {error && <WarnErrorIcon className="error-icon" />}
 
       {error && (
         <ContainerError>

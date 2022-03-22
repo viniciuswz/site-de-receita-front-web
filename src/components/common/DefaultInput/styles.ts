@@ -54,14 +54,6 @@ export const Container = styled.div<ContainerProps>`
 
     &:focus {
     }
-    ${props =>
-      props.hasValue &&
-      css`
-        padding: 14px 24px;
-        height: 70%;
-        z-index: 1;
-        transform: translateY(5px);
-      `}
   }
   label {
     font-family: Roboto Slab;
@@ -72,42 +64,9 @@ export const Container = styled.div<ContainerProps>`
     color: #9c98a6;
     margin-bottom: 8px;
   }
-
-  ${props =>
-    props.isErrored &&
-    css`
-      border-color: #db3b21;
-      background-color: rgba(219, 5, 33, 10%);
-      min-height: 72px;
-      height: auto;
-      z-index: 2;
-
-      .error-icon {
-        margin-right: 24px;
-        min-width: 24px;
-      }
-      label {
-        color: ${shade(0.4, '#c1bccc')};
-      }
-      input {
-        &:-webkit-autofill {
-          -webkit-box-shadow: 0 0 0 30px #fbe6e8 inset;
-        }
-        &:focus {
-          & + label {
-            color: ${shade(0.4, '#c1bccc')};
-          }
-        }
-      }
-      &.focus {
-      }
-    `}
 `;
 export const ContainerError = styled.div`
-  position: absolute;
-  left: 24px;
-  bottom: 4px;
-  z-index: 1;
+  margin-top: 4px;
 
   span {
     font-family: Roboto Slab;

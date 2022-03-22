@@ -1,4 +1,4 @@
 import Navigation from './Navigation';
-import GeneralInfos from './GeneralInfos';
+import ControllerForm from './ControllerForm';
 
-export { Navigation, GeneralInfos };
+export { Navigation, ControllerForm };

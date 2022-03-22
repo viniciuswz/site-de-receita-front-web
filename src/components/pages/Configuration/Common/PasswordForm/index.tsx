@@ -13,9 +13,10 @@ import {
   ButtonContainer,
   ButtonSubmit,
   ButtonReset,
+  Grid,
 } from './styles';
 
-const GeneralInfos: React.FC = () => {
+const PasswordForm: React.FC = () => {
   const { addToast } = useToast();
 
   const formRef = useRef<FormHandles>(null);
@@ -24,10 +25,15 @@ const GeneralInfos: React.FC = () => {
       try {
         formRef.current?.setErrors({});
         const schema = Yup.object({
-          email: Yup.string()
-            .email('Você precisa inserir um e-mail válido')
-            .required('O campo é obrigatorio'),
-          password: Yup.string().required('O campo é obrigatorio'),
+          password: Yup.string()
+            .required('O campo é obrigatorio')
+            .min(8, 'Precisa ter pelo menos 8 caracteres'),
+          newPassword: Yup.string()
+            .required('O campo é obrigatorio')
+            .min(8, 'Precisa ter pelo menos 8 caracteres'),
+          confirmNewPassword: Yup.string()
+            .min(8, 'Precisa ter pelo menos 8 caracteres')
+            .oneOf([Yup.ref('newPassword'), null], 'As senhas não são iguais'),
         });
 
         await schema.validate(data, {
@@ -58,8 +64,20 @@ const GeneralInfos: React.FC = () => {
     <Container>
       <Form ref={formRef} onSubmit={handleFormSubmit}>
         <h1>Informações da conta</h1>
-
-        <DefaultInput labelName="teste" name="teste" />
+        <Grid>
+          <div className="item-100">
+            <DefaultInput labelName="Senha atual" name="password" />
+          </div>
+          <div className="item-100">
+            <DefaultInput labelName="Nova senha" name="newPassword" />
+          </div>
+          <div className="item-100">
+            <DefaultInput
+              labelName="Confirmar senha"
+              name="confirmNewPassword"
+            />
+          </div>
+        </Grid>
         <ButtonContainer>
           <ButtonReset>Redefinir</ButtonReset>
           <ButtonSubmit>confirmar edição</ButtonSubmit>
@@ -69,4 +87,4 @@ const GeneralInfos: React.FC = () => {
   );
 };
 
-export default GeneralInfos;
+export default PasswordForm;

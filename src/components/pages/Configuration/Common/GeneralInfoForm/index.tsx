@@ -13,9 +13,10 @@ import {
   ButtonContainer,
   ButtonSubmit,
   ButtonReset,
+  Grid,
 } from './styles';
 
-const GeneralInfos: React.FC = () => {
+const GeneralInfoForm: React.FC = () => {
   const { addToast } = useToast();
 
   const formRef = useRef<FormHandles>(null);
@@ -24,10 +25,15 @@ const GeneralInfos: React.FC = () => {
       try {
         formRef.current?.setErrors({});
         const schema = Yup.object({
+          name: Yup.string().required('O campo é obrigatorio'),
+          lastname: Yup.string().required('O campo é obrigatorio'),
           email: Yup.string()
-            .email('Você precisa inserir um e-mail válido')
+            .email('E-mail inválido')
             .required('O campo é obrigatorio'),
-          password: Yup.string().required('O campo é obrigatorio'),
+          bio: Yup.string().required('O campo é obrigatorio'),
+          country: Yup.string().required('O campo é obrigatorio'),
+          state: Yup.string().required('O campo é obrigatorio'),
+          city: Yup.string().required('O campo é obrigatorio'),
         });
 
         await schema.validate(data, {
@@ -58,7 +64,34 @@ const GeneralInfos: React.FC = () => {
     <Container>
       <Form ref={formRef} onSubmit={handleFormSubmit}>
         <h1>Informações da conta</h1>
-        <DefaultInput labelName="teste" name="teste" />
+        <Grid>
+          <div className="item-50">
+            <DefaultInput labelName="Nome" name="name" />
+          </div>
+          <div className="item-50">
+            <DefaultInput labelName="Sobrenome" name="lastname" />
+          </div>
+          <div className="item-100">
+            <DefaultInput labelName="E-mail" name="email" />
+          </div>
+          <div className="item-100">
+            <DefaultInput labelName="Bio" name="bio" />
+          </div>
+        </Grid>
+
+        <h2>Localização</h2>
+        <Grid>
+          <div className="item-50">
+            <DefaultInput labelName="País" name="country" />
+          </div>
+          <div className="item-50">
+            <DefaultInput labelName="Estado" name="state" />
+          </div>
+          <div className="item-50">
+            <DefaultInput labelName="Cidade" name="city" />
+          </div>
+        </Grid>
+
         <ButtonContainer>
           <ButtonReset>Redefinir</ButtonReset>
           <ButtonSubmit>confirmar edição</ButtonSubmit>
@@ -68,4 +101,4 @@ const GeneralInfos: React.FC = () => {
   );
 };
 
-export default GeneralInfos;
+export default GeneralInfoForm;
