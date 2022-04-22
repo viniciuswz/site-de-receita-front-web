@@ -6,6 +6,7 @@
       "@/styles/*": ["src/styles/pages/*"],
       "@/assets/*": ["public/*"],
       "@/hooks/*": ["src/hooks/*"],
+      "@/utils/*": ["src/utils/*"],
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
