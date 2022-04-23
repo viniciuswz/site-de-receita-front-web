@@ -1,8 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useField } from '@unform/core';
 
-import { Container, DropBox, Label } from './style';
+import { FaCamera } from 'react-icons/fa';
+import {
+  Container,
+  ContainerError,
+  DropBox,
+  DropBoxMessage,
+  Label,
+} from './style';
+
+import DroppedImages from './DroppedImages';
 
 interface Props {
   name: string;
@@ -19,38 +28,63 @@ interface InputRefProps extends HTMLInputElement {
 
 const ReactDropzoneInput: React.FC<Props> = ({ name, label }) => {
   const inputRef = useRef<InputRefProps>(null);
-  const { fieldName, registerField, defaultValue = [] } = useField(name);
+  const { fieldName, registerField, defaultValue = [], error } = useField(name);
   const [acceptedFiles, setAcceptedFiles] =
     useState<customFile[]>(defaultValue);
+
+  const addImage = useCallback((onDropAcceptedFiles: File[]) => {
+    setAcceptedFiles(oldFiles => {
+      const payload = [...oldFiles, ...onDropAcceptedFiles];
+      const payloadwithoutDuplication = payload.filter(
+        (file: File, index: number, self: File[]) => {
+          const nonDuplicatedIndex = self.findIndex(
+            duplicatedFile => duplicatedFile.name === file.name
+          );
+          return nonDuplicatedIndex === index;
+        }
+      );
+      const payloadWithPreview = payloadwithoutDuplication.map(file =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        })
+      );
+
+      if (inputRef.current) {
+        inputRef.current.acceptedFiles = payloadWithPreview;
+      }
+
+      return payloadWithPreview;
+    });
+  }, []);
+
+  const removeImage = useCallback((fileName: string) => {
+    setAcceptedFiles(files => {
+      const newFiles = files.filter((file: File) => file.name !== fileName);
+      if (inputRef.current) {
+        inputRef.current.acceptedFiles = newFiles;
+      }
+      return newFiles;
+    });
+  }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: 'image/*',
     onDrop: onDropAcceptedFiles => {
-      if (inputRef.current) {
-        inputRef.current.acceptedFiles = onDropAcceptedFiles;
-        // setAcceptedFiles(onDropAcceptedFiles);
-        setAcceptedFiles(
-          onDropAcceptedFiles.map(file =>
-            Object.assign(file, {
-              preview: URL.createObjectURL(file),
-            })
-          )
-        );
-      }
+      // setAcceptedFiles(onDropAcceptedFiles);
+
+      addImage(onDropAcceptedFiles);
     },
   });
 
   useEffect(() => {
-    console.log(acceptedFiles);
-  }, [acceptedFiles]);
+    console.log(isDragActive);
+  }, [isDragActive]);
 
   useEffect(() => {
     registerField({
       name: fieldName,
       ref: inputRef.current,
       getValue: (ref: InputRefProps) => {
-        console.log('asdasd', ref);
-        console.dir(ref);
         return ref.acceptedFiles || [];
       },
       clearValue: () => {
@@ -60,20 +94,17 @@ const ReactDropzoneInput: React.FC<Props> = ({ name, label }) => {
         }
       },
       setValue: (ref: InputRefProps, value) => {
-        // console.log('ASDASDASD', ref);
-        if (inputRef.current) {
-          inputRef.current.acceptedFiles = value;
-          setAcceptedFiles(value);
-        }
+        addImage(value);
       },
     });
-  }, [fieldName, registerField]);
+  }, [fieldName, registerField, addImage]);
   useEffect(() => {
-    console.log();
-  }, []);
+    console.log('asdasd', acceptedFiles);
+  }, [acceptedFiles]);
   return (
     <Container>
       <Label>{label}</Label>
+
       <DropBox
         {...getRootProps()}
         role="button"
@@ -84,11 +115,32 @@ const ReactDropzoneInput: React.FC<Props> = ({ name, label }) => {
         <input {...getInputProps()} accept="image/*" ref={inputRef} />
 
         {isDragActive ? (
-          <p>Drop the files here ...</p>
+          <DropBoxMessage>
+            <p>Solte os arquivos aqui</p>
+          </DropBoxMessage>
         ) : (
-          <p>Drag drop some files here, or click to select files</p>
+          <DropBoxMessage>
+            <FaCamera />
+            <p>
+              Arraste e solte algumas imagens aqui, ou clique para selecionalas
+            </p>
+            <span>No máximo 4 imagens</span>
+          </DropBoxMessage>
         )}
       </DropBox>
+
+      {acceptedFiles.length > 0 && (
+        <DroppedImages
+          files={acceptedFiles}
+          removeImage={removeImage}
+          addImage={addImage}
+        />
+      )}
+      {error && (
+        <ContainerError>
+          <span className="error">{error}</span>
+        </ContainerError>
+      )}
     </Container>
   );
 };

@@ -27,23 +27,29 @@ const renamePlaceholder = () => {
   return `Selecione uma categoria`;
 };
 
+interface Options {
+  value: string;
+  label: string;
+}
 interface DefaultSelectProps {
   name: string;
   label: string;
+  propOptions: Array<Options>;
+  isMulti?: boolean;
 }
 
-const DefaultSelect: React.FC<DefaultSelectProps> = ({ name, label }) => {
+const DefaultSelect: React.FC<DefaultSelectProps> = ({
+  name,
+  label,
+  propOptions,
+  isMulti,
+}) => {
   const [inputValue, setInputValue] = useState('');
   const { fieldName, defaultValue, registerField, error } = useField(name);
   const [inputFocus, setInputFocus] = useState(false);
   const selectRef = useRef(null);
 
-  const [options, setOptions] = useState([
-    { value: 'blues', label: 'test 1' },
-    { value: 'rock', label: 'test 2' },
-    { value: 'jazz', label: 'test 3' },
-    { value: 'orchestra', label: 'test 4' },
-  ]);
+  const [options, setOptions] = useState(() => propOptions);
 
   const handleInputFocus = useCallback(() => {
     setInputFocus(true);
@@ -108,6 +114,7 @@ const DefaultSelect: React.FC<DefaultSelectProps> = ({ name, label }) => {
         options={options}
         formatCreateLabel={renameLabel}
         placeholder="Escolha uma opção..."
+        isMulti={isMulti}
       />
       {error && (
         <ContainerError>

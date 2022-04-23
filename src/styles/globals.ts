@@ -13,13 +13,7 @@ export default createGlobalStyle`
   }
 
   header {
-    & ~ div{
-      margin-top: 108px;
 
-      @media screen and (max-width: 768px) {
-        margin-top: 63px;
-      }
-    }
   }
 
   input{

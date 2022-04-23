@@ -6,7 +6,7 @@ import {
   useState,
 } from 'react';
 
-export type StepFormType = 'one' | 'two' | 'three';
+export type StepFormType = 'one' | 'two' | 'three' | 'four';
 
 interface SendRecipeFormContextData {
   currentStep: StepFormType;
@@ -18,7 +18,7 @@ export const SendRecipeFormContext = createContext(
 );
 
 export const SendRecipeFormProvider: React.FC = ({ children }) => {
-  const [currentStep, setCurrentStep] = useState<StepFormType>('one');
+  const [currentStep, setCurrentStep] = useState<StepFormType>('three');
 
   const changeCurrentStep = useCallback((value: StepFormType) => {
     setCurrentStep(value);

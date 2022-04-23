@@ -2,9 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div``;
 
-export const Box = styled.div``;
-
-export const DropBox = styled.div`
+export const ButtonAddMore = styled.button`
+  margin-top: 24px;
   width: 100%;
   height: 100%;
   cursor: pointer;
@@ -21,7 +20,7 @@ export const DropBox = styled.div`
   }
 `;
 
-export const DropBoxMessage = styled.div`
+export const ButtonAddMoreMessage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,26 +56,21 @@ export const DropBoxMessage = styled.div`
   }
 `;
 
-export const Label = styled.p`
-  font-family: Roboto Slab;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 16px;
-  color: #9c98a6;
-  margin-bottom: 8px;
+export const RecipeInstructionContainer = styled.div``;
+
+export const RecipeInstruction = styled.div`
+  h3 {
+  }
+
+  ol {
+    li {
+    }
+  }
 `;
 
-export const ContainerError = styled.div`
-  margin-top: 4px;
-
-  span {
-    font-family: Roboto Slab;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 12px;
-
-    color: #db3b21;
+export const RecipeInstructionHeader = styled.div`
+  h3 {
+  }
+  button {
   }
 `;

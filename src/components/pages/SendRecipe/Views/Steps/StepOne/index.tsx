@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
@@ -13,11 +13,22 @@ import DropImage from '@/components/common/DefaultDropImage';
 
 import { useSendRecipeForm } from '../../../hooks/SendRecipeForm';
 
-import { ButtonSubmit } from './styles';
+import {
+  ContainerButton,
+  Container,
+  ContainerScroll,
+  StepHeader,
+} from '../styles';
 
 const StepOne: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { currentStep, changeCurrentStep } = useSendRecipeForm();
+  const [options, setOptions] = useState([
+    { value: 'blues', label: 'test 1' },
+    { value: 'rock', label: 'test 2' },
+    { value: 'jazz', label: 'test 3' },
+    { value: 'orchestra', label: 'test 4' },
+  ]);
 
   const { addToast } = useToast();
 
@@ -30,7 +41,9 @@ const StepOne: React.FC = () => {
           titulo_da_receita: Yup.string().required('O campo é obrigatorio'),
           descricao: Yup.string().required('O campo é obrigatorio'),
           categoria: Yup.array().min(1, 'Selecione uma categoria'),
-          imagens: Yup.array().min(1, 'Envie pelo menos uma imagem'),
+          imagens: Yup.array()
+            .min(1, 'Envie pelo menos uma imagem')
+            .max(4, 'você passou do limite de 4 imagens'),
         });
 
         await schema.validate(data, {
@@ -42,6 +55,7 @@ const StepOne: React.FC = () => {
           description: 'deu certo',
           type: 'success',
         });
+        changeCurrentStep('two');
         console.log(data);
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
@@ -55,21 +69,27 @@ const StepOne: React.FC = () => {
         }
       }
     },
-    [addToast]
+    [addToast, changeCurrentStep]
   );
 
   return (
-    <div>
-      <h1>Etapa 1</h1>
-      <Form ref={formRef} onSubmit={handleFormSubmit}>
-        <Input name="titulo_da_receita" labelName="Título da receita" />
-        <TextArea name="descricao" labelName="Descrição" />
-        <Select name="categoria" label="Catregoria" />
-        <DropImage name="imagens" label="Fotos" />
+    <ContainerScroll>
+      <Container>
+        <StepHeader>
+          <h1>Informações básicas</h1>
+        </StepHeader>
+        <Form ref={formRef} onSubmit={handleFormSubmit}>
+          <Input name="titulo_da_receita" labelName="Título da receita" />
+          <TextArea name="descricao" labelName="Descrição" />
+          <Select name="categoria" label="Catregoria" propOptions={options} />
+          <DropImage name="imagens" label="Fotos" />
 
-        <ButtonSubmit type="submit"> enviar</ButtonSubmit>
-      </Form>
-    </div>
+          <ContainerButton>
+            <button type="submit">Próxima etapa</button>
+          </ContainerButton>
+        </Form>
+      </Container>
+    </ContainerScroll>
   );
 };
 
