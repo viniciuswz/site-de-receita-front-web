@@ -36,6 +36,7 @@ interface DefaultSelectProps {
   label: string;
   propOptions: Array<Options>;
   isMulti?: boolean;
+  placeholder: string;
 }
 
 const DefaultSelect: React.FC<DefaultSelectProps> = ({
@@ -43,6 +44,7 @@ const DefaultSelect: React.FC<DefaultSelectProps> = ({
   label,
   propOptions,
   isMulti,
+  placeholder,
 }) => {
   const [inputValue, setInputValue] = useState('');
   const { fieldName, defaultValue, registerField, error } = useField(name);
@@ -74,15 +76,8 @@ const DefaultSelect: React.FC<DefaultSelectProps> = ({
     console.groupEnd();
   };
 
-  const handleInputChange = (newValue: string, actionMeta: InputActionMeta) => {
-    console.group('Input Changed');
-    console.log(newValue);
-    setInputValue(newValue);
-    console.log(`action: ${actionMeta.action}`);
-    console.groupEnd();
-  };
-
   useEffect(() => {
+    console.log('asdasdasd', defaultValue);
     registerField({
       name: fieldName,
       ref: selectRef.current,
@@ -108,13 +103,12 @@ const DefaultSelect: React.FC<DefaultSelectProps> = ({
         classNamePrefix="default-select"
         name={name}
         isClearable
-        onChange={handleChange}
         ref={selectRef}
-        onInputChange={handleInputChange}
         options={options}
         formatCreateLabel={renameLabel}
-        placeholder="Escolha uma opção..."
+        placeholder={placeholder}
         isMulti={isMulti}
+        defaultValue={defaultValue}
       />
       {error && (
         <ContainerError>

@@ -81,6 +81,10 @@ const DefaultInput: React.FC<DefaultInputProps> = ({
     });
   }, [fieldName, registerField]);
 
+  useEffect(() => {
+    console.log('asdfasdasaaa', defaultValue);
+  }, [defaultValue]);
+
   return (
     <Container
       hasValue={!!inputValue}

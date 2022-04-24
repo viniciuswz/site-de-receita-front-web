@@ -81,7 +81,12 @@ const StepOne: React.FC = () => {
         <Form ref={formRef} onSubmit={handleFormSubmit}>
           <Input name="titulo_da_receita" labelName="Título da receita" />
           <TextArea name="descricao" labelName="Descrição" />
-          <Select name="categoria" label="Catregoria" propOptions={options} />
+          <Select
+            name="categoria"
+            label="Categoria"
+            propOptions={options}
+            placeholder="Selecione uma categoria..."
+          />
           <DropImage name="imagens" label="Fotos" />
 
           <ContainerButton>

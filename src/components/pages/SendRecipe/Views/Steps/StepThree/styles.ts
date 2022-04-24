@@ -18,6 +18,10 @@ export const ButtonAddMore = styled.button`
   min-height: 180px;
   p {
   }
+  transition: opacity 0.1s;
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const ButtonAddMoreMessage = styled.div`
@@ -56,21 +60,78 @@ export const ButtonAddMoreMessage = styled.div`
   }
 `;
 
-export const RecipeInstructionContainer = styled.div``;
+export const RecipeInstructionContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #fcfdfd;
+  border: 1px solid #dce2e5;
+  padding: 24px;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+export const RecipeInstructionList = styled.div`
+  div {
+    & ~ div {
+      margin-top: 16px;
+    }
+  }
+`;
 
 export const RecipeInstruction = styled.div`
-  h3 {
-  }
-
+  width: 100%;
+  margin-top: 16px;
   ol {
+    list-style-type: none;
     li {
+      counter-increment: step-counter;
+      position: relative;
+      display: flex;
+      align-items: center;
+      font-family: 'Roboto Slab';
+      font-style: normal;
+      font-weight: 400;
+      color: #3f3d3c;
+      &::before {
+        content: counter(step-counter) '.';
+        display: block;
+
+        line-height: 1.25rem;
+
+        font-family: 'Roboto Slab';
+        font-style: normal;
+        font-weight: 500;
+        width: 20px;
+      }
     }
   }
 `;
 
 export const RecipeInstructionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: #3f3d3c;
   h3 {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
   }
   button {
+    border: 0;
+    background-color: transparent;
+    svg {
+      color: #3f3d3c;
+    }
   }
 `;
