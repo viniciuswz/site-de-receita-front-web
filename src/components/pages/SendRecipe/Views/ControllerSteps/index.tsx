@@ -1,6 +1,11 @@
 import { useMemo } from 'react';
 import { useSendRecipeForm } from '../../hooks/SendRecipeForm';
-import { StepFormOne, StepFormTwo, StepFormThree } from '../Steps';
+import {
+  StepFormOne,
+  StepFormTwo,
+  StepFormThree,
+  StepStepFour,
+} from '../Steps';
 
 const ControllerSteps = () => {
   const { currentStep, changeCurrentStep } = useSendRecipeForm();
@@ -10,6 +15,7 @@ const ControllerSteps = () => {
       one: <StepFormOne />,
       two: <StepFormTwo />,
       three: <StepFormThree />,
+      four: <StepStepFour />,
     };
   }, []);
 

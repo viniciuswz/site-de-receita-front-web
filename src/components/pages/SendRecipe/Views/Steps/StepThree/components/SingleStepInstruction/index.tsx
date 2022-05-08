@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
@@ -6,32 +6,23 @@ import { useToast } from '@/hooks/Toast';
 import * as Yup from 'yup';
 import getValidationErrors from '@/utils/getValidationErrors';
 
-import Input from '@/components/common/DefaultInput';
 import TextArea from '@/components/common/DefaultTextArea';
-import Select from '@/components/common/DefaultSelect';
-import DropImage from '@/components/common/DefaultDropImage';
 
 import {
   StepsFormData,
   useSendRecipeForm,
-} from '../../../hooks/SendRecipeForm';
+} from '../../../../../hooks/SendRecipeForm';
 
 import {
   ContainerButton,
   Container,
   ContainerScroll,
   StepHeader,
-} from '../styles';
+} from '../../../styles';
 
-const StepOne: React.FC = () => {
+const StepFour: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { changeCurrentStep, changeFormData, formData } = useSendRecipeForm();
-  const [options] = useState([
-    { value: 'blues', label: 'test 1' },
-    { value: 'rock', label: 'test 2' },
-    { value: 'jazz', label: 'test 3' },
-    { value: 'orchestra', label: 'test 4' },
-  ]);
 
   const { addToast } = useToast();
 
@@ -40,12 +31,7 @@ const StepOne: React.FC = () => {
       try {
         formRef.current?.setErrors({});
         const schema = Yup.object({
-          title: Yup.string().required('O campo é obrigatorio'),
-          description: Yup.string().required('O campo é obrigatorio'),
-          category: Yup.array().min(1, 'Selecione uma categoria'),
-          images: Yup.array()
-            .min(1, 'Envie pelo menos uma imagem')
-            .max(4, 'você passou do limite de 4 imagens'),
+          rules: Yup.string().required('O campo é obrigatorio'),
         });
 
         await schema.validate(data, {
@@ -53,18 +39,21 @@ const StepOne: React.FC = () => {
         });
 
         const formDataDto: StepsFormData = {
-          baseInfo: {
-            ...data,
+          howToMake: {
+            isStages: false,
+            instructions: [{ id: 123, ...data, type: 'default' }],
           },
         };
 
         changeFormData(formDataDto);
+
         addToast({
           title: 'ae carai',
           description: 'deu certo',
           type: 'success',
         });
-        changeCurrentStep('two');
+
+        changeCurrentStep('four');
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           // Validation failed
@@ -78,26 +67,32 @@ const StepOne: React.FC = () => {
     [addToast, changeCurrentStep, changeFormData]
   );
 
+  useEffect(() => {
+    // formData.howToMake?.instructions.map()
+  }, [formData]);
+
+  const defaultValue = useMemo(() => {
+    if (formData?.howToMake?.instructions.length) {
+      return { rules: formData.howToMake?.instructions[0].rules };
+    }
+    return {};
+  }, [formData]);
+
   return (
     <ContainerScroll>
       <Container>
         <StepHeader>
-          <h1>Informações básicas</h1>
+          <h1>Modo de preparo</h1>
+          <p>
+            Coloque uma isntrução por linha, não adicione hífem ou numeração
+          </p>
         </StepHeader>
         <Form
           ref={formRef}
           onSubmit={handleFormSubmit}
-          initialData={formData.baseInfo}
+          initialData={defaultValue}
         >
-          <Input name="title" labelName="Título da receita" />
-          <TextArea name="description" labelName="Descrição" />
-          <Select
-            name="category"
-            label="Categoria"
-            propOptions={options}
-            placeholder="Selecione uma categoria..."
-          />
-          <DropImage name="images" label="Fotos" />
+          <TextArea name="rules" labelName="Como fazer essa receita?" />
 
           <ContainerButton>
             <button type="submit">Próxima etapa</button>
@@ -108,4 +103,4 @@ const StepOne: React.FC = () => {
   );
 };
 
-export default StepOne;
+export default StepFour;

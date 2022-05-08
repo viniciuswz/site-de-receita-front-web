@@ -28,6 +28,7 @@ interface InputRefProps extends HTMLInputElement {
 
 const ReactDropzoneInput: React.FC<Props> = ({ name, label }) => {
   const inputRef = useRef<InputRefProps>(null);
+  const dropzoneRef = useRef<InputRefProps>(null);
   const { fieldName, registerField, defaultValue = [], error } = useField(name);
   const [acceptedFiles, setAcceptedFiles] =
     useState<customFile[]>(defaultValue);
@@ -71,20 +72,18 @@ const ReactDropzoneInput: React.FC<Props> = ({ name, label }) => {
     accept: 'image/*',
     onDrop: onDropAcceptedFiles => {
       // setAcceptedFiles(onDropAcceptedFiles);
-
       addImage(onDropAcceptedFiles);
     },
   });
-
-  useEffect(() => {
-    console.log(isDragActive);
-  }, [isDragActive]);
 
   useEffect(() => {
     registerField({
       name: fieldName,
       ref: inputRef.current,
       getValue: (ref: InputRefProps) => {
+        if (defaultValue.length) {
+          return defaultValue;
+        }
         return ref.acceptedFiles || [];
       },
       clearValue: () => {
@@ -97,10 +96,8 @@ const ReactDropzoneInput: React.FC<Props> = ({ name, label }) => {
         addImage(value);
       },
     });
-  }, [fieldName, registerField, addImage]);
-  useEffect(() => {
-    console.log('asdasd', acceptedFiles);
-  }, [acceptedFiles]);
+  }, [fieldName, registerField, addImage, defaultValue]);
+
   return (
     <Container>
       <Label>{label}</Label>
@@ -111,6 +108,8 @@ const ReactDropzoneInput: React.FC<Props> = ({ name, label }) => {
         onClick={() => inputRef.current?.click()}
         onKeyDown={() => inputRef.current?.click()}
         tabIndex={0}
+        defaultValue={defaultValue}
+        ref={dropzoneRef}
       >
         <input {...getInputProps()} accept="image/*" ref={inputRef} />
 

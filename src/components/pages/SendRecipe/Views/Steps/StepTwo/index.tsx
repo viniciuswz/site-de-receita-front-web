@@ -1,32 +1,21 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { Form } from '@unform/web';
-import { FormHandles } from '@unform/core';
+import { useCallback, useState } from 'react';
 
 import { useToast } from '@/hooks/Toast';
-import * as Yup from 'yup';
-import getValidationErrors from '@/utils/getValidationErrors';
-
-import Input from '@/components/common/DefaultInput';
-import TextArea from '@/components/common/DefaultTextArea';
-import Select from '@/components/common/DefaultSelect';
-import DropImage from '@/components/common/DefaultDropImage';
 
 import MultiStepIcon from '@/assets/images/sendRecipe_icon_choice_multi_step.svg';
 import OneStepIcon from '@/assets/images/sendRecipe_icon_choice_one_step.svg';
 import DoubtStepIcon from '@/assets/images/sendRecipe_icon_choice_doubt.svg';
 
-import { useSendRecipeForm } from '../../../hooks/SendRecipeForm';
+import {
+  StepsFormData,
+  useSendRecipeForm,
+} from '../../../hooks/SendRecipeForm';
 
 import { ContainerButton, Container, StepHeader } from '../styles';
-import {
-  ChoicesContainer,
-  ChoiceButton,
-  NextStepButton,
-  ChoiceTipParagraph,
-} from './styles';
+import { ChoicesContainer, ChoiceButton, ChoiceTipParagraph } from './styles';
 
 const StepTwo: React.FC = () => {
-  const { currentStep, changeCurrentStep } = useSendRecipeForm();
+  const { changeCurrentStep, changeFormData, formData } = useSendRecipeForm();
 
   const { addToast } = useToast();
 
@@ -50,14 +39,27 @@ const StepTwo: React.FC = () => {
 
   const [selectedChoice, setSelectedChoice] = useState<
     boolean | null | undefined
-  >(undefined);
+  >(() => {
+    if (typeof formData.howToMake?.isStages === 'boolean') {
+      return formData.howToMake?.isStages;
+    }
+
+    return undefined;
+  });
 
   const handleChoice = useCallback((value: boolean | null) => {
     setSelectedChoice(value);
   }, []);
 
   const handleNextStep = useCallback(() => {
-    if (selectedChoice === false || selectedChoice === true) {
+    if (typeof selectedChoice === 'boolean') {
+      const formDataDto: StepsFormData = {
+        howToMake: {
+          isStages: selectedChoice,
+          instructions: [],
+        },
+      };
+      changeFormData(formDataDto);
       addToast({ title: 'Bora', description: 'estamos quase lá meu chapa' });
       changeCurrentStep('three');
       return;
@@ -77,7 +79,7 @@ const StepTwo: React.FC = () => {
       description: 'sei nem o que colocar aqui',
       type: 'error',
     });
-  }, [selectedChoice, changeCurrentStep, addToast]);
+  }, [selectedChoice, changeCurrentStep, addToast, changeFormData]);
 
   return (
     <Container>

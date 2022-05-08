@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useMemo } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
@@ -6,10 +6,7 @@ import { useToast } from '@/hooks/Toast';
 import * as Yup from 'yup';
 import getValidationErrors from '@/utils/getValidationErrors';
 
-import Input from '@/components/common/DefaultInput';
 import TextArea from '@/components/common/DefaultTextArea';
-import Select from '@/components/common/DefaultSelect';
-import DropImage from '@/components/common/DefaultDropImage';
 
 import {
   StepsFormData,
@@ -23,15 +20,9 @@ import {
   StepHeader,
 } from '../styles';
 
-const StepOne: React.FC = () => {
+const StepFour: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-  const { changeCurrentStep, changeFormData, formData } = useSendRecipeForm();
-  const [options] = useState([
-    { value: 'blues', label: 'test 1' },
-    { value: 'rock', label: 'test 2' },
-    { value: 'jazz', label: 'test 3' },
-    { value: 'orchestra', label: 'test 4' },
-  ]);
+  const { changeFormData, formData } = useSendRecipeForm();
 
   const { addToast } = useToast();
 
@@ -40,12 +31,7 @@ const StepOne: React.FC = () => {
       try {
         formRef.current?.setErrors({});
         const schema = Yup.object({
-          title: Yup.string().required('O campo é obrigatorio'),
-          description: Yup.string().required('O campo é obrigatorio'),
-          category: Yup.array().min(1, 'Selecione uma categoria'),
-          images: Yup.array()
-            .min(1, 'Envie pelo menos uma imagem')
-            .max(4, 'você passou do limite de 4 imagens'),
+          ingredients: Yup.string().required('O campo é obrigatorio'),
         });
 
         await schema.validate(data, {
@@ -53,18 +39,16 @@ const StepOne: React.FC = () => {
         });
 
         const formDataDto: StepsFormData = {
-          baseInfo: {
-            ...data,
-          },
+          ...data,
         };
 
         changeFormData(formDataDto);
+
         addToast({
           title: 'ae carai',
           description: 'deu certo',
           type: 'success',
         });
-        changeCurrentStep('two');
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           // Validation failed
@@ -75,29 +59,33 @@ const StepOne: React.FC = () => {
         }
       }
     },
-    [addToast, changeCurrentStep, changeFormData]
+    [addToast, changeFormData]
   );
+
+  const defaultValue = useMemo(() => {
+    return {
+      ingredients: formData.ingredients,
+    };
+  }, [formData]);
 
   return (
     <ContainerScroll>
       <Container>
         <StepHeader>
-          <h1>Informações básicas</h1>
+          <h1>Ingredientes</h1>
+          <p>
+            Coloque um ingrediente por linha, não adicione hífem ou numeração
+          </p>
         </StepHeader>
         <Form
           ref={formRef}
           onSubmit={handleFormSubmit}
-          initialData={formData.baseInfo}
+          initialData={defaultValue}
         >
-          <Input name="title" labelName="Título da receita" />
-          <TextArea name="description" labelName="Descrição" />
-          <Select
-            name="category"
-            label="Categoria"
-            propOptions={options}
-            placeholder="Selecione uma categoria..."
+          <TextArea
+            name="ingredients"
+            labelName="O que vamos precisar para essa receita?"
           />
-          <DropImage name="images" label="Fotos" />
 
           <ContainerButton>
             <button type="submit">Próxima etapa</button>
@@ -108,4 +96,4 @@ const StepOne: React.FC = () => {
   );
 };
 
-export default StepOne;
+export default StepFour;

@@ -1,11 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
-import { Options } from 'react-select';
+import { createContext, useCallback, useContext, useState } from 'react';
 
 export type StepFormType = 'one' | 'two' | 'three' | 'four';
 
@@ -25,17 +18,18 @@ export interface RecipeInstructionFormProps
   type: Option[];
 }
 
-interface StepsFormData {
+export interface StepsFormData {
   baseInfo?: {
     title: string;
     description: string;
     image: File[];
     category: Option[];
   };
-  HowToMake?: {
-    isStages: true;
-    instructions: RecipeInstructionProps;
+  howToMake?: {
+    isStages: boolean;
+    instructions: RecipeInstructionProps[];
   };
+  ingredients?: string;
 }
 
 interface SendRecipeFormContextData {
@@ -54,7 +48,7 @@ export const SendRecipeFormContext = createContext(
 );
 
 export const SendRecipeFormProvider: React.FC = ({ children }) => {
-  const [currentStep, setCurrentStep] = useState<StepFormType>('three');
+  const [currentStep, setCurrentStep] = useState<StepFormType>('one');
   const [isModalRecipeInstructionOpen, setIsModalRecipeInstructionOpen] =
     useState(false);
   const [formData, setFormData] = useState<StepsFormData>({} as StepsFormData);
@@ -68,7 +62,12 @@ export const SendRecipeFormProvider: React.FC = ({ children }) => {
   }, []);
 
   const changeFormData = useCallback((value: StepsFormData) => {
-    setFormData(value);
+    setFormData(oldValue => {
+      return {
+        ...oldValue,
+        ...value,
+      };
+    });
   }, []);
 
   return (
