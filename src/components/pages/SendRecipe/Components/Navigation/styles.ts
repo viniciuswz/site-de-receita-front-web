@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
   color: #f4ede8;
   padding: 32px 24px;
+  @media screen and (max-width: 1024px) {
+    padding: 24px 0;
+  }
 `;
 
 export const NavHead = styled.header`
@@ -43,6 +46,9 @@ export const NavHead = styled.header`
     line-height: 14px;
     margin-top: 8px;
   }
+  @media screen and (max-width: 1024px) {
+    padding: 0px 32px;
+  }
 `;
 
 export const NavigatorSteps = styled.nav`
@@ -74,7 +80,7 @@ export const NavigatorSteps = styled.nav`
   @media screen and (max-width: 1024px) {
     overflow-x: scroll;
     overflow-y: hidden;
-    padding: 16px 0;
+    padding: 16px 32px;
     margin-top: 32px;
     scroll-behavior: smooth;
     ul {
