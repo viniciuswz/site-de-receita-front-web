@@ -42,7 +42,7 @@ export const ContainerButton = styled.div`
   @media screen and (max-width: 1024px) {
     /* justify-content: center; */
     position: sticky;
-    padding: 32px;
+    /* padding: 32px; */
     //box-shadow: 0px 2px 10px 0px rgba(000, 000, 000, 0.2);
     left: 0;
   }
