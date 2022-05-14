@@ -103,6 +103,7 @@ const DefaultInput: React.FC<DefaultInputProps> = ({
         onFocus={() => {
           handleInputFocus();
         }}
+        onBlur={handleInputBlur}
         ref={elementInputRef}
         defaultValue={defaultValue}
         {...rest}

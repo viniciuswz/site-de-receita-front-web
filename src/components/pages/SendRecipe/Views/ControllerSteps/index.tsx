@@ -7,8 +7,8 @@ import {
   StepStepFour,
 } from '../Steps';
 
-const ControllerSteps = () => {
-  const { currentStep, changeCurrentStep } = useSendRecipeForm();
+const ControllerSteps: React.FC = () => {
+  const { currentStep } = useSendRecipeForm();
 
   const allFormSteps = useMemo(() => {
     return {
@@ -20,7 +20,6 @@ const ControllerSteps = () => {
   }, []);
 
   const ComponentCurrentStep = useMemo(() => {
-    console.log('HERE', currentStep);
     return allFormSteps[currentStep] || <StepFormOne />;
   }, [allFormSteps, currentStep]);
 

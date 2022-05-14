@@ -36,6 +36,7 @@ export const DropBoxMessage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 
     font-family: 'Roboto Slab';
     font-style: normal;

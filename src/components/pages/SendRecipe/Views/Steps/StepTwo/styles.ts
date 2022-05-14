@@ -3,11 +3,16 @@ import styled from 'styled-components';
 export const ChoicesContainer = styled.div`
   display: flex;
   margin-bottom: 16px;
+  padding: 32px;
 
   button {
     &:first-child {
       margin-left: 0;
     }
+  }
+
+  @media screen and (max-width: 1024px) {
+    overflow-x: scroll;
   }
 `;
 
@@ -17,8 +22,8 @@ export const ChoiceButton = styled.button`
   border-radius: 8px;
   margin: 0 16px;
 
-  width: 160px;
-  height: 174px;
+  min-width: 160px;
+  min-height: 174px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,6 +62,11 @@ export const ChoiceButton = styled.button`
     font-size: 16px;
     line-height: 16px;
     margin-top: 16px;
+  }
+
+  svg {
+    max-width: 105px;
+    width: 85%;
   }
 
   &.active {
@@ -101,6 +111,7 @@ export const ChoiceTipParagraph = styled.p`
   font-size: 14px;
   line-height: 14px;
   margin-top: 8px;
+  padding: 0 32px;
   /* or 100% */
 
   color: #3f3d3c;

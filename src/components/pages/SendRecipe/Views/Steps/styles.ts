@@ -39,6 +39,12 @@ export const ContainerButton = styled.div`
     color: #f4ede8;
     border: 0;
   }
+  @media screen and (max-width: 1024px) {
+    position: fixed;
+    padding: 32px;
+    box-shadow: 0px 2px 10px 0px rgba(000, 000, 000, 0.2);
+    left: 0;
+  }
 `;
 
 export const ContainerScroll = styled.div`
@@ -66,6 +72,12 @@ export const ContainerScroll = styled.div`
   ::-webkit-scrollbar-thumb:hover {
     background: #d8e0e4;
   }
+
+  @media screen and (max-width: 1024px) {
+    max-height: none;
+    overflow-y: initial;
+    position: initial;
+  }
 `;
 
 export const Container = styled.div`
@@ -81,6 +93,12 @@ export const Container = styled.div`
     textarea,
     .default-select__control {
       background-color: #f5f8fa;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    position: initial;
+    form {
+      padding-bottom: 100px;
     }
   }
 `;
@@ -111,5 +129,7 @@ export const StepHeader = styled.header`
     /* or 100% */
 
     color: #3f3d3c;
+  }
+  @media screen and (max-width: 1024px) {
   }
 `;

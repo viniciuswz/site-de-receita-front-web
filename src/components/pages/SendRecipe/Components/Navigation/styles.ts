@@ -70,6 +70,30 @@ export const NavigatorSteps = styled.nav`
       }
     }
   }
+
+  @media screen and (max-width: 1024px) {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 16px 0;
+    margin-top: 32px;
+    scroll-behavior: smooth;
+    ul {
+      display: flex;
+      li {
+        display: flex;
+        align-items: center;
+        div:first-child {
+          margin: 0 16px;
+        }
+        p {
+          white-space: nowrap;
+          ~ span {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
 `;
 
 export const NavigatorStepsItemContent = styled.div`
@@ -123,5 +147,13 @@ export const NavigatorStepsSeparator = styled.div`
     border: 2px dashed #6e6e6e;
     height: 56px;
     width: 0;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 56px;
+    align-items: center;
+    span {
+      height: 1px;
+      width: 56px;
+    }
   }
 `;

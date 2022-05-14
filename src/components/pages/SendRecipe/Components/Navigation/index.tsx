@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useRef, useCallback, useEffect, useState } from 'react';
 
 import { FiChevronLeft } from 'react-icons/fi';
-import { string } from 'yup';
 
 import { useSendRecipeForm, StepFormType } from '../../hooks/SendRecipeForm';
 
@@ -22,6 +21,8 @@ interface Steps {
 
 const Navigation: React.FC = () => {
   const { currentStep, changeCurrentStep } = useSendRecipeForm();
+
+  const containerRef = useRef<HTMLDivElement>(null);
   const [steps, setSteps] = useState<Steps[]>([
     {
       name: 'Informações básicas',
@@ -71,6 +72,10 @@ const Navigation: React.FC = () => {
         };
       });
     });
+    console.log('asdas AAA');
+    containerRef.current?.scroll({
+      left: document.getElementById('active')?.offsetLeft,
+    });
   }, [currentStep]);
   return (
     <>
@@ -82,10 +87,14 @@ const Navigation: React.FC = () => {
           <h2>Envie uma receita</h2>
           <p>São só alguns passos simples</p>
         </NavHead>
-        <NavigatorSteps>
+        <NavigatorSteps ref={containerRef}>
           <ul>
             {steps.map((item, index) => (
-              <li className={item.isCompleted ? 'active' : ''} key={item.step}>
+              <li
+                className={item.isCompleted ? 'active' : ''}
+                id={item.step === currentStep ? 'active' : ''}
+                key={item.step}
+              >
                 <NavigatorStepsSeparator>
                   <span />
                 </NavigatorStepsSeparator>

@@ -9,6 +9,9 @@ export const Container = styled.div`
   margin-top: 40px;
   background-color: #fff;
   border-radius: 24px;
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(8, 1fr);
+  }
 `;
 
 export const ContentLeft = styled.div`
@@ -19,6 +22,13 @@ export const ContentLeft = styled.div`
   border-top-left-radius: 24px;
   border-bottom-left-radius: 24px;
   min-height: 700px;
+  @media screen and (max-width: 1024px) {
+    grid-column: 1/9;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    min-height: auto;
+    border-radius: 0;
+  }
 `;
 
 export const ContentRight = styled.div`
@@ -30,4 +40,11 @@ export const ContentRight = styled.div`
   border-top-right-radius: 24px;
   border-bottom-right-radius: 24px;
   overflow: hidden;
+  @media screen and (max-width: 1024px) {
+    grid-column: 1/9;
+    grid-auto-columns: 100%;
+    max-height: none;
+    min-height: auto;
+    padding-bottom: 100px;
+  }
 `;
