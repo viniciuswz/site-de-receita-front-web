@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 
-export const Content = styled.header`
+export const FakeContent = styled.header`
+  height: 104px;
+  width: 100%;
+`;
+
+export const Content = styled.div`
   width: 100%;
   background-color: #ff8a00;
   position: relative;
