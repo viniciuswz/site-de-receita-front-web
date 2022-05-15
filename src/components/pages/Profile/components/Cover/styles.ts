@@ -1,0 +1,30 @@
+import styled from 'styled-components';
+
+export const CoverContainer = styled.div`
+  position: relative;
+  img {
+    object-fit: cover;
+    aspect-ratio: 16/4;
+    width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+`;
+
+export const ToggleCoverButton = styled.button`
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  border: 0;
+  border-radius: 50%;
+
+  background-color: #fff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+  svg {
+    width: 24px;
+    height: 24px;
+    color: #3f3d3c;
+  }
+`;
