@@ -86,7 +86,7 @@ export const ImageInfoBottom = styled.div`
     line-height: 20px;
     margin-bottom: 16px;
 
-    color: #e3e9f3;
+    color: #f2f2fc;
   }
 `;
 
