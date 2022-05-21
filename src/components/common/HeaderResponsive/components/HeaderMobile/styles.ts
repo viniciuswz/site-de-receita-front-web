@@ -1,24 +1,26 @@
 import styled from 'styled-components';
 
-export const Container = styled.header`
+export const ContainerFixed = styled.header`
+  height: 62px;
+
+  svg {
+    height: 46px;
+  }
+`;
+
+export const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 62px;
-  padding: 0 16px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  background-color: #ff8a00;
-
   z-index: 10;
 
-  svg {
-    height: 46px;
-  }
+  background-color: #ff8a00;
+  padding: 0 16px;
 `;
 
 export const ButtonMenu = styled.button`
