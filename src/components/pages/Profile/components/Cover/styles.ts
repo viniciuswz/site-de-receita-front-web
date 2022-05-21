@@ -15,6 +15,13 @@ export const CoverContainer = styled.div`
       aspect-ratio: 16/5;
     }
   }
+  @media screen and (max-width: 481px) {
+    img {
+      aspect-ratio: 16/7;
+      display: block;
+      border-radius: 0;
+    }
+  }
 `;
 
 export const ToggleCoverButton = styled.button`
@@ -36,5 +43,10 @@ export const ToggleCoverButton = styled.button`
     width: 24px;
     height: 24px;
     color: #3f3d3c;
+  }
+
+  @media screen and (max-width: 481px) {
+    bottom: 24px;
+    right: 24px;
   }
 `;

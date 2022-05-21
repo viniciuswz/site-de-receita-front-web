@@ -14,9 +14,15 @@ export const ContainerCenter = styled.div`
 `;
 
 export const ContainerLeft = styled.div`
+  position: sticky;
+  height: 360px;
+  top: 280px;
   grid-column: 1/6;
   @media screen and (max-width: 1024px) {
     grid-column: 1/13;
+    position: initial;
+    height: auto;
+    top: auto;
   }
 `;
 
