@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  img {
-    width: 100%;
-    height: auto;
-  }
+  border-radius: 14px;
+  overflow: hidden;
 `;
 
 export const Image = styled.div`
-  overflow: hidden;
   object-fit: cover;
   justify-content: center;
   align-items: center;
   position: relative;
+  display: flex;
   img {
     width: 100%;
     height: auto;

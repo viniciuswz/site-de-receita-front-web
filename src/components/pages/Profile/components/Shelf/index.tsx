@@ -12,15 +12,15 @@ import 'swiper/css/navigation';
 const Shelf: React.FC = () => {
   return (
     <ShelfContent>
-      <h3>Receita posta</h3>
+      <h3>Vitrine</h3>
       <ShelfScroll>
         <Swiper
-          loop
           spaceBetween={10}
           navigation
           modules={[FreeMode, Navigation]}
-          centeredSlides
+          freeMode
           className="mySwiper"
+          slidesPerView="auto"
         >
           <SwiperSlide>
             <RecipeItem />

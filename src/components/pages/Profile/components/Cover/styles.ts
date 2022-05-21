@@ -9,9 +9,19 @@ export const CoverContainer = styled.div`
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
+
+  @media screen and (max-width: 768px) {
+    img {
+      aspect-ratio: 16/5;
+    }
+  }
 `;
 
 export const ToggleCoverButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 48px;
   height: 48px;
   position: absolute;

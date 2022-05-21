@@ -5,6 +5,8 @@ export const Container = styled.div`
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  padding-bottom: 32px;
+  background-color: #fff;
 `;
 
 export const ContainerCenter = styled.div`
@@ -13,8 +15,14 @@ export const ContainerCenter = styled.div`
 
 export const ContainerLeft = styled.div`
   grid-column: 1/6;
+  @media screen and (max-width: 1024px) {
+    grid-column: 1/13;
+  }
 `;
 
 export const ContainerRight = styled.div`
   grid-column: 6/13;
+  @media screen and (max-width: 1024px) {
+    grid-column: 1/13;
+  }
 `;

@@ -8,6 +8,11 @@ export const ProfileInfoContainer = styled.div`
   margin: 24px;
   position: relative;
   top: -80px;
+  @media screen and (max-width: 1024px) {
+    top: 0px;
+    margin: 0px;
+    box-shadow: none;
+  }
 `;
 
 export const ProfilePhoto = styled.div`
@@ -51,6 +56,10 @@ export const ProfilePhoto = styled.div`
 `;
 
 export const TogglePhotoButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 48px;
   height: 48px;
   position: absolute;
