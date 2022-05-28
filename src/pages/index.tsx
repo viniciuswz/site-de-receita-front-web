@@ -5,6 +5,7 @@ import FirstFoldBackgroundDetail from '@/assets/images/home_first_folk_backgroun
 import { BiSearch } from 'react-icons/bi';
 
 import TopRecipeItemHome from '@/components/pages/Home/TopRecipeItemHome';
+import SkeletonScreen from '@/components/common/SkeletonScreen';
 
 import Link from 'next/link';
 import {
@@ -54,12 +55,13 @@ const Home: React.FC = () => {
           <TopReciperSectionContainer>
             <h2>Top receitas da semana</h2>
             <TopReciperSectionGridContainer>
-              <TopRecipeItemHome position={1} href="/receita/strogonoff" />
+              <SkeletonScreen type="a" />
+              {/* <TopRecipeItemHome position={1} href="/receita/strogonoff" />
               <TopRecipeItemHome position={2} href="/receita/strogonoff" />
               <TopRecipeItemHome position={3} href="/receita/strogonoff" />
               <TopRecipeItemHome position={4} href="/receita/strogonoff" />
               <TopRecipeItemHome position={5} href="/receita/strogonoff" />
-              <TopRecipeItemHome position={6} href="/receita/strogonoff" />
+              <TopRecipeItemHome position={6} href="/receita/strogonoff" /> */}
             </TopReciperSectionGridContainer>
           </TopReciperSectionContainer>
         </TopReciperSection>
