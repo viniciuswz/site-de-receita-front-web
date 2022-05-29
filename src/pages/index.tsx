@@ -8,6 +8,7 @@ import TopRecipeItemHome from '@/components/pages/Home/TopRecipeItemHome';
 import SkeletonScreen from '@/components/common/SkeletonScreen';
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import {
   HomeBackground,
   FirstFold,
@@ -23,6 +24,12 @@ import {
 } from '../styles/pages/Home';
 
 const Home: React.FC = () => {
+  const [existTopRecipeItem, setExistTopRecipeItem] = useState<Boolean>();
+
+  setTimeout(() => {
+    setExistTopRecipeItem(true);
+  }, 5000);
+
   return (
     <>
       <Head>
@@ -54,15 +61,20 @@ const Home: React.FC = () => {
         <TopReciperSection>
           <TopReciperSectionContainer>
             <h2>Top receitas da semana</h2>
-            <TopReciperSectionGridContainer>
-              <SkeletonScreen type="a" />
-              {/* <TopRecipeItemHome position={1} href="/receita/strogonoff" />
-              <TopRecipeItemHome position={2} href="/receita/strogonoff" />
-              <TopRecipeItemHome position={3} href="/receita/strogonoff" />
-              <TopRecipeItemHome position={4} href="/receita/strogonoff" />
-              <TopRecipeItemHome position={5} href="/receita/strogonoff" />
-              <TopRecipeItemHome position={6} href="/receita/strogonoff" /> */}
-            </TopReciperSectionGridContainer>
+            {existTopRecipeItem ? (
+              <TopReciperSectionGridContainer>
+                <TopRecipeItemHome position={1} href="/receita/strogonoff" />
+                <TopRecipeItemHome position={2} href="/receita/strogonoff" />
+                <TopRecipeItemHome position={3} href="/receita/strogonoff" />
+                <TopRecipeItemHome position={4} href="/receita/strogonoff" />
+                <TopRecipeItemHome position={5} href="/receita/strogonoff" />
+                <TopRecipeItemHome position={6} href="/receita/strogonoff" />
+              </TopReciperSectionGridContainer>
+            ) : (
+              <TopReciperSectionGridContainer>
+                <SkeletonScreen type="reciperHome" />
+              </TopReciperSectionGridContainer>
+            )}
           </TopReciperSectionContainer>
         </TopReciperSection>
         <CategorySection>
