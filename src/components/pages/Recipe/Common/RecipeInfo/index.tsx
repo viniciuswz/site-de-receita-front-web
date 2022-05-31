@@ -24,7 +24,7 @@ const RecipeInfo: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   setTimeout(() => {
-    setLoading(false);
+    setLoading(true);
   }, 5000);
 
   return loading ? (

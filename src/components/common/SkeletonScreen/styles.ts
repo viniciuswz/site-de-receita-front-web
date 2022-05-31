@@ -34,7 +34,7 @@ export const Skeleton = styled.div`
 
   &.btn {
     height: 24px;
-    width: 40%;
+    width: 30%;
     margin: 5px 0px;
     margin-left: 5px;
   }
@@ -52,6 +52,16 @@ export const Skeleton = styled.div`
     margin: 5px 0;
   }
 
+  &.slide_active {
+    width: 100%;
+    height: 180px;
+  }
+  &.slide {
+    margin-top: 16px;
+    width: 100%;
+    height: 40px;
+  }
+
   &.square {
     width: 140px;
     height: 140px;
@@ -60,106 +70,5 @@ export const Skeleton = styled.div`
   &.perfil {
     width: 100%;
     height: 100%;
-  }
-`;
-
-export const SkeletonScreenItem = styled.div`
-  animation: ${SkeletonAnimation} 1s linear infinite alternate;
-  background: linear-gradient(
-    90deg,
-    #939393,
-    #939393,
-    #a1a1a1,
-    #939393,
-    #939393
-  );
-  background-size: 600%;
-  color: #444;
-  overflow: hidden;
-  position: relative;
-  border-radius: 8px;
-
-  &.grid-1 {
-    grid-area: a;
-    height: 402px;
-  }
-  &.grid-2 {
-    grid-area: b;
-  }
-
-  &.grid-3 {
-    grid-area: c;
-    height: 364px;
-  }
-  &.grid-4 {
-    grid-area: d;
-    height: 428px;
-  }
-
-  &.grid-5 {
-    grid-area: e;
-    height: 364px;
-  }
-
-  &.grid-6 {
-    grid-area: f;
-    height: 298px;
-    img {
-      width: 100%;
-      height: auto;
-    }
-  }
-  &.grid-7 {
-    grid-area: g;
-  }
-  &.grid-8 {
-    grid-area: h;
-  }
-  &.grid-9 {
-    grid-area: i;
-  }
-
-  @media screen and (max-width: 1024px) and (min-width: 482px) {
-    &.grid-1 {
-      height: 320px;
-    }
-    &.grid-3 {
-      height: 270px;
-    }
-    &.grid-4 {
-      height: 320px;
-    }
-    &.grid-5 {
-      height: 320px;
-    }
-    &.grid-6 {
-      height: 270px;
-      img {
-        width: auto;
-        height: 100%;
-      }
-    }
-  }
-
-  @media screen and (max-width: 481px) {
-    &.grid-1 {
-      height: 220px;
-    }
-    &.grid-3 {
-      height: 170px;
-    }
-    &.grid-4 {
-      height: 220px;
-    }
-    &.grid-5 {
-      height: 220px;
-    }
-    &.grid-6 {
-      height: 170px;
-      img {
-        width: auto;
-        height: 100%;
-      }
-    }
   }
 `;

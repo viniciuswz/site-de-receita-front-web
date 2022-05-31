@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 import SwiperClass from 'swiper/types/swiper-class';
+import SkeletonScreen from '@/components/common/SkeletonScreen';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -16,11 +17,16 @@ import { Container } from './styles';
 // import required modules
 
 const RecipePhotos: React.FC = () => {
+  const [loading, setLoading] = useState<boolean>(false);
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass>(
     null as unknown as SwiperClass
   );
 
-  return (
+  setTimeout(() => {
+    setLoading(true);
+  }, 5000);
+
+  return loading ? (
     <Container>
       <Swiper
         loop
@@ -76,12 +82,6 @@ const RecipePhotos: React.FC = () => {
         <SwiperSlide>
           <img
             src="https://swiperjs.com/demos/images/nature-8.jpg"
-            alt="uhul yeah"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://swiperjs.com/demos/images/nature-9.jpg"
             alt="uhul yeah"
           />
         </SwiperSlide>
@@ -150,19 +150,14 @@ const RecipePhotos: React.FC = () => {
             alt="uhul yeah"
           />
         </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://swiperjs.com/demos/images/nature-9.jpg"
-            alt="uhul yeah"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://swiperjs.com/demos/images/nature-10.jpg"
-            alt="uhul yeah"
-          />
-        </SwiperSlide>
       </Swiper>
+    </Container>
+  ) : (
+    <Container>
+      <div className="mySwiper">
+        <SkeletonScreen type="slide_active" />
+      </div>
+      <SkeletonScreen type="slide" />
     </Container>
   );
 };
