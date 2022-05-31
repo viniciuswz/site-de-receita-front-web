@@ -5,6 +5,8 @@ import { RiTimerLine } from 'react-icons/ri';
 
 import { FaFacebookF, FaWhatsapp, FaPrint } from 'react-icons/fa';
 
+import SkeletonScreen from '@/components/common/SkeletonScreen';
+import { useState } from 'react';
 import {
   Container,
   Profile,
@@ -19,7 +21,13 @@ import {
 } from './styles';
 
 const RecipeInfo: React.FC = () => {
-  return (
+  const [loading, setLoading] = useState<boolean>(false);
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 5000);
+
+  return loading ? (
     <Container>
       <Profile>
         <ProfileInfoPhoto>
@@ -82,6 +90,42 @@ const RecipeInfo: React.FC = () => {
             <FaPrint />
           </button>
         </li>
+      </RecipeShare>
+    </Container>
+  ) : (
+    <Container>
+      <Profile>
+        <ProfileInfoPhoto>
+          <SkeletonScreen type="perfil" />
+        </ProfileInfoPhoto>
+        <ProfileInfo>
+          <SkeletonScreen type="title" />
+          <SkeletonScreen type="text" />
+        </ProfileInfo>
+        <ProfileInfoButton>
+          <FiMoreHorizontal size={24} />
+        </ProfileInfoButton>
+      </Profile>
+      <RecipeCommonInfo>
+        <SkeletonScreen type="titleH1" />
+        <SkeletonScreen type="text" />
+      </RecipeCommonInfo>
+      <RecipeRating>
+        <SkeletonScreen type="text" />
+      </RecipeRating>
+      <RecipeDetails>
+        <SkeletonScreen type="btn" />
+        <SkeletonScreen type="btn" />
+      </RecipeDetails>
+      <RecipeDescription>
+        <SkeletonScreen type="text" />
+        <SkeletonScreen type="text" />
+        <SkeletonScreen type="text" />
+      </RecipeDescription>
+      <RecipeShare>
+        <SkeletonScreen type="social_share" />
+        <SkeletonScreen type="social_share" />
+        <SkeletonScreen type="social_share" />
       </RecipeShare>
     </Container>
   );

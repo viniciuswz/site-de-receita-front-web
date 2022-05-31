@@ -1,19 +1,12 @@
 import { ReactElement, useState } from 'react';
-import ReciperHome from './Template/reciperHome';
+import { Skeleton } from './styles';
 
 interface SkeletonScreenProps {
   type: string;
 }
-type AllTemplate = {
-  reciperHome: ReactElement;
-};
 
 const SkeletonScreen: React.FC<SkeletonScreenProps> = ({ type }) => {
-  const allTemplate: AllTemplate = {
-    reciperHome: <ReciperHome />,
-  };
-
-  return type ? allTemplate[type] : '';
+  return <Skeleton className={type} />;
 };
 
 export default SkeletonScreen;
