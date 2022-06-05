@@ -1,4 +1,6 @@
 import { MdOutlinePhotoCamera, MdClose } from 'react-icons/md';
+import SkeletonScreen from '@/components/common/SkeletonScreen';
+import { useState } from 'react';
 
 import {
   RatingForm,
@@ -12,7 +14,13 @@ import {
 } from './styles';
 
 const RecipeForm: React.FC = () => {
-  return (
+  const [loading, setLoading] = useState<boolean>(false);
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 5000);
+
+  return loading ? (
     <>
       <RatingForm>
         <RatingHeader>
@@ -45,6 +53,18 @@ const RecipeForm: React.FC = () => {
             <button type="button">+2fotos</button>
           </RatingPhotosUploaded>
         </RatingPhotosContainer>
+      </RatingForm>
+    </>
+  ) : (
+    <>
+      <RatingForm>
+        <RatingHeader>
+          <RatingFormUser>
+            <SkeletonScreen type="perfil" />
+          </RatingFormUser>
+          <SkeletonScreen type="BtnSelect" />
+          <SkeletonScreen type="btnSend" />
+        </RatingHeader>
       </RatingForm>
     </>
   );

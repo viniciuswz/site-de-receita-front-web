@@ -1,6 +1,7 @@
 import { AiFillStar } from 'react-icons/ai';
-
 import { MdOutlinePhotoCamera, MdClose } from 'react-icons/md';
+import { useState } from 'react';
+import SkeletonScreen from '@/components/common/SkeletonScreen';
 
 import {
   RatingDetailsContainer,
@@ -9,7 +10,13 @@ import {
 } from './styles';
 
 const RecipeDetails: React.FC = () => {
-  return (
+  const [loading, setLoading] = useState<boolean>(false);
+
+  setTimeout(() => {
+    setLoading(true);
+  }, 5000);
+
+  return loading ? (
     <>
       <RatingDetailsContainer>
         <RatingDetailsGeneral>
@@ -64,6 +71,22 @@ const RecipeDetails: React.FC = () => {
             </div>
             <span>50</span>
           </li>
+        </RatingDetailsByStars>
+      </RatingDetailsContainer>
+    </>
+  ) : (
+    <>
+      <RatingDetailsContainer>
+        <RatingDetailsGeneral>
+          <SkeletonScreen type="square" />
+          <SkeletonScreen type="text" />
+        </RatingDetailsGeneral>
+        <RatingDetailsByStars>
+          <SkeletonScreen type="text" />
+          <SkeletonScreen type="text" />
+          <SkeletonScreen type="text" />
+          <SkeletonScreen type="text" />
+          <SkeletonScreen type="text" />
         </RatingDetailsByStars>
       </RatingDetailsContainer>
     </>

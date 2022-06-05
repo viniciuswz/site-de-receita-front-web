@@ -1,10 +1,12 @@
 /* eslint-disable import/no-unresolved */
 import { Swiper, SwiperSlide } from 'swiper/react';
+import SkeletonScreen from '@/components/common/SkeletonScreen';
 
 import { BiChevronDown } from 'react-icons/bi';
 import { AiFillStar } from 'react-icons/ai';
 
 import { IoMdThumbsDown, IoMdThumbsUp } from 'react-icons/io';
+import { useState } from 'react';
 import {
   Container,
   Header,
@@ -22,7 +24,13 @@ import {
 } from './styles';
 
 const RatingList: React.FC = () => {
-  return (
+  const [loading, setLoading] = useState<boolean>(false);
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 5000);
+
+  return loading ? (
     <>
       <Container>
         <Header>
@@ -155,6 +163,99 @@ const RatingList: React.FC = () => {
         <RatingListLoadMore type="button">
           Carregar mais avaliações
         </RatingListLoadMore>
+      </Container>
+    </>
+  ) : (
+    <>
+      <Container>
+        <Header>
+          <SkeletonScreen type="titleH3" />
+          <SkeletonScreen type="BtnSelect" />
+        </Header>
+        <RatingListItem>
+          <RatingListItemHeaderPhoto>
+            <SkeletonScreen type="perfil" />
+          </RatingListItemHeaderPhoto>
+          <RatingListItemContent>
+            <RatingListItemHeader>
+              <RatingListItemHeaderInfo>
+                <SkeletonScreen type="text" />
+                <div>
+                  <div>
+                    <SkeletonScreen type="star" />
+                  </div>
+                  <SkeletonScreen type="span" />
+                </div>
+              </RatingListItemHeaderInfo>
+            </RatingListItemHeader>
+            <RatingListItemText>
+              <SkeletonScreen type="text" />
+              <SkeletonScreen type="text" />
+              <SkeletonScreen type="text" />
+            </RatingListItemText>
+            <RatingListPhotosUploaded>
+              <Swiper
+                spaceBetween={16}
+                slidesPerView={2}
+                className="photosUploaded"
+              >
+                <SwiperSlide>
+                  <SkeletonScreen type="comentsImg" />
+                </SwiperSlide>
+              </Swiper>
+            </RatingListPhotosUploaded>
+            <RatingListOpinion>
+              <SkeletonScreen type="title" />
+              <div>
+                <SkeletonScreen type="social_share" />
+                <SkeletonScreen type="social_share" />
+                <SkeletonScreen type="titleH4" />
+              </div>
+            </RatingListOpinion>
+          </RatingListItemContent>
+        </RatingListItem>
+        <RatingListItem>
+          <RatingListItemHeaderPhoto>
+            <SkeletonScreen type="perfil" />
+          </RatingListItemHeaderPhoto>
+          <RatingListItemContent>
+            <RatingListItemHeader>
+              <RatingListItemHeaderInfo>
+                <SkeletonScreen type="text" />
+                <div>
+                  <div>
+                    <SkeletonScreen type="star" />
+                  </div>
+                  <SkeletonScreen type="span" />
+                </div>
+              </RatingListItemHeaderInfo>
+            </RatingListItemHeader>
+            <RatingListItemText>
+              <SkeletonScreen type="text" />
+              <SkeletonScreen type="text" />
+              <SkeletonScreen type="text" />
+            </RatingListItemText>
+            <RatingListPhotosUploaded>
+              <Swiper
+                spaceBetween={16}
+                slidesPerView={2}
+                className="photosUploaded"
+              >
+                <SwiperSlide>
+                  <SkeletonScreen type="comentsImg" />
+                </SwiperSlide>
+              </Swiper>
+            </RatingListPhotosUploaded>
+            <RatingListOpinion>
+              <SkeletonScreen type="title" />
+              <div>
+                <SkeletonScreen type="social_share" />
+                <SkeletonScreen type="social_share" />
+                <SkeletonScreen type="titleH4" />
+              </div>
+            </RatingListOpinion>
+          </RatingListItemContent>
+        </RatingListItem>
       </Container>
     </>
   );

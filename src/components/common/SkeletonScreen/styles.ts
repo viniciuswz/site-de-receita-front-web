@@ -52,6 +52,31 @@ export const Skeleton = styled.div`
     margin: 5px 0;
   }
 
+  &.BtnSelect {
+    width: 100%;
+    height: 48px;
+    margin-right: 5px;
+    border-radius: 10px;
+  }
+
+  &.btnSend {
+    width: 18%;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  &.titleH3 {
+    height: 24px;
+    width: 40%;
+    margin: 5px 10px 5px 0;
+  }
+
+  &.titleH4 {
+    height: 14px;
+    width: 30%;
+    margin: 5px 10px 5px 0;
+  }
+
   &.slide_active {
     width: 100%;
     height: 180px;
@@ -62,9 +87,25 @@ export const Skeleton = styled.div`
     height: 40px;
   }
 
+  &.span {
+    width: 60px;
+    height: 10px;
+  }
+
+  &.star {
+    width: 90px;
+    height: 10px;
+  }
+
   &.square {
     width: 140px;
     height: 140px;
+  }
+
+  &.comentsImg {
+    width: 110px;
+    height: 60px;
+    border-radius: 10px;
   }
 
   &.perfil {
